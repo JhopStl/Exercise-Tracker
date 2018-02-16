@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "workout")
 public class WorkoutController {
 
-   //add new Workout Data Object
+
+    //@Autowired gives an instance of the WorkoutDao class by the framework
     @Autowired
     private WorkoutDao workoutDao;
 
     //handler to list workout sessions (times went to the gym)
+    //Will return all the Workouts in the database
     //links view to Workoutdao
     @RequestMapping(value="")
     public String index(Model model) {
@@ -36,7 +38,7 @@ public class WorkoutController {
         model.addAttribute(new Workout());
         return "workout/add";
     }
-
+    //creates a new Workout object and saves it to DB
     @RequestMapping(value="add", method = RequestMethod.POST)
     public String processWorkout(@ModelAttribute Workout newWorkout, Model model) {
 

@@ -7,24 +7,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date; //use bootstrap date picker
 
+//@Entity tells Spring boot that this class is stored in a relational database
+//Every field in class is stored in a DB unless you tell it not to be
 @Entity
 public class Workout {
 
 
     @Id //unique primary key column in DB
-    @GeneratedValue //generates this value
+    @GeneratedValue //the data layer should generate this value for us
     private int id;
 
     private String name;
     private java.util.Date Date;
 
     //constructor
+    //these fields need to match those in the view (form fields, etc.)
     public Workout (String name, Date date) {
         this.name = name;
         this.Date = date;
     }
 
-    //default constructor
+    //default constructor - each persistent class needs one
     public Workout(){}
 
     //getters and setters
@@ -33,7 +36,7 @@ public class Workout {
     public int getId() {
         return id;
     }
-    //let DB set id
+    //no setter because it should not be changed outside of this class
 
     public String getName() {
         return name;
