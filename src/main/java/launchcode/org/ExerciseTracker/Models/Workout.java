@@ -18,7 +18,10 @@ public class Workout {
     private int id;
 
     private String name;
-    private java.util.Date Date;
+
+    //private java.util.Date Date;
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    private Date Date;
 
     //constructor
     //these fields need to match those in the view (form fields, etc.)
@@ -53,4 +56,5 @@ public class Workout {
     public void setDate(java.util.Date date) {
         Date = date;
     }
+
 }
