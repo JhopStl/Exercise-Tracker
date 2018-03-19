@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date; //use bootstrap date picker
-
 //@Entity tells Spring boot that this class is stored in a relational database
 //Every field in class is stored in a DB unless you tell it not to be
 @Entity
