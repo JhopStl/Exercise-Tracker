@@ -12,7 +12,7 @@
         </tr>
 
         <tr th:each="workout: ${workouts}">
-            <td th:text="${workout.name}"></td>
+            <td><a th:href="'?id=' + ${workout.id}" th:text="${workout.name}"></a></td>
             <td th:text="${workout.date}"></td>
         </tr>
     </table>
