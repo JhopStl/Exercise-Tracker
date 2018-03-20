@@ -12,18 +12,16 @@
     </div>
 </head>
 <body>
-    <h1 th:text="${title}">Title</h1>
-    <table>
-        <tr>
-            <th>Workout</th>
-            <th>Date</th>
-        </tr>
+<h1 th:text="${title}">Title</h1>
+<table>
+    <tr>
+        <th>Exercise</th>
+    </tr>
 
-        <tr th:each="workout: ${workouts}">
-            <td><a th:href="'?id=' + ${workout.id}" th:text="${workout.name}"></a></td>
-            <td th:text="${workout.date}"></td>
-        </tr>
-    </table>
+    <tr th:each="exercise: ${exercises}">
+        <td><a th:href="'?id=' + ${exercise.id}" th:text="${exercise.name}"></a></td>
+    </tr>
+</table>
 
 </body>
 </html>

@@ -24,7 +24,7 @@ public class WorkoutController {
     @RequestMapping(value="")
     public String index(Model model) {
         model.addAttribute("workouts", workoutDao.findAll());
-      model.addAttribute("title", "Workout Session");
+      model.addAttribute("title", "Session");
       return "workout/index";
 
     }
@@ -34,7 +34,7 @@ public class WorkoutController {
     @RequestMapping(value="add", method = RequestMethod.GET)
     public String addWorkout(Model model) {
 
-        model.addAttribute("title", "Add Workout");
+        model.addAttribute("title", "Add Session");
         model.addAttribute(new Workout());
         return "workout/add";
     }
@@ -42,7 +42,7 @@ public class WorkoutController {
     @RequestMapping(value="add", method = RequestMethod.POST)
     public String processWorkout(@ModelAttribute Workout newWorkout, Model model) {
 
-        model.addAttribute("title", "Add Workout");
+        model.addAttribute("title", "Add Session");
 
         //save workout to DB
         workoutDao.save(newWorkout);
