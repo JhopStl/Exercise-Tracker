@@ -9,7 +9,7 @@ import java.util.Date; //use bootstrap date picker
 //@Entity tells Spring boot that this class is stored in a relational database
 //Every field in class is stored in a DB unless you tell it not to be
 @Entity
-public class Workout {
+public class Session {
 
 
     @Id //unique primary key column in DB
@@ -24,13 +24,13 @@ public class Workout {
 
     //constructor
     //these fields need to match those in the view (form fields, etc.)
-    public Workout (String name, Date date) {
+    public Session (String name, Date date) {
         this.name = name;
         this.Date = date;
     }
 
     //default constructor - each persistent class needs one
-    public Workout(){}
+    public Session(){}
 
     //getters and setters
 

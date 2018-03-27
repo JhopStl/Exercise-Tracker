@@ -1,6 +1,6 @@
 package launchcode.org.ExerciseTracker.models.data;
 
-import launchcode.org.ExerciseTracker.models.Workout;
+import launchcode.org.ExerciseTracker.models.Session;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +11,6 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional //all methods should be wrapped into one transaction
-public interface WorkoutDao extends CrudRepository<Workout,Integer> {
+public interface SessionDao extends CrudRepository<Session,Integer> {
+
 }
