@@ -1,9 +1,9 @@
 package launchcode.org.ExerciseTracker.models.Forms;
 
-import org.hibernate.Session;
+import launchcode.org.ExerciseTracker.models.wSession;
 
 //non persistent items
 public class AddSessionItem {
 
-    private Session session;
+    private wSession Session;
 }

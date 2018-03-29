@@ -1,15 +1,15 @@
 package launchcode.org.ExerciseTracker.models;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date; //use bootstrap date picker
+import java.util.List;
+
 //@Entity tells Spring boot that this class is stored in a relational database
 //Every field in class is stored in a DB unless you tell it not to be
 @Entity
-public class Session {
+public class wSession {
 
 
     @Id //unique primary key column in DB
@@ -22,15 +22,20 @@ public class Session {
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date Date;
 
+    //links to other class - one to many relationship
+    @OneToMany //one Session to many exercises
+    @JoinColumn(name="session_id")
+    public List<Exercise> exercises = new ArrayList<>();
+
     //constructor
     //these fields need to match those in the view (form fields, etc.)
-    public Session (String name, Date date) {
+    public wSession (String name, Date date) {
         this.name = name;
         this.Date = date;
     }
 
     //default constructor - each persistent class needs one
-    public Session(){}
+    public wSession(){}
 
     //getters and setters
 
@@ -56,4 +61,11 @@ public class Session {
         Date = date;
     }
 
+    public List<Exercise> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(List<Exercise> exercises) {
+        this.exercises = exercises;
+    }
 }

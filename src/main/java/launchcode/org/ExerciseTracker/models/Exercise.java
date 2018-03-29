@@ -3,6 +3,7 @@ package launchcode.org.ExerciseTracker.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Exercise {
@@ -11,6 +12,9 @@ public class Exercise {
     @GeneratedValue
     private int id;
     private String name;
+
+    @ManyToOne
+    public wSession wSession;
 
     //constructor
     public Exercise (String name) {
@@ -33,5 +37,13 @@ public class Exercise {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public launchcode.org.ExerciseTracker.models.wSession getwSession() {
+        return wSession;
+    }
+
+    public void setwSession(launchcode.org.ExerciseTracker.models.wSession wSession) {
+        this.wSession = wSession;
     }
 }
