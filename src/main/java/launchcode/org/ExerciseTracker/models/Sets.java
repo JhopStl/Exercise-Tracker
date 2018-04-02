@@ -5,24 +5,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Set {
+public class Sets {
 
     @Id
     @GeneratedValue
     private int id;
+
+
     private int rep;
     private double weight;
 
     //constructor
-    public Set (int id, int rep, double weight) {
+    public Sets (int id, int rep, double weight) {
         this.id = id;
         this.rep = rep;
         this.weight = weight;
     }
 
     //default constructor
-    public Set () {}
-    
+    public Sets () {}
+
     //getters and setters
 
     public int getId() {

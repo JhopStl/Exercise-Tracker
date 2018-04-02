@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <title th:text = "${title}">Default Title</title>
+    <div>
+        <nav>
+            <a href="/session">Home</a> |
+        </nav>
+    </div>
+</head>
+<body>
+<h1 th:text = "${title}">Default Title</h1>
+
+<form method="POST">
+    <input type="number" name="reps" /><br/><br/>
+    <input type="number" name ="weight" />
+    <input type="submit" value="Add Set" />
+</form>
+</body>
+</html>
