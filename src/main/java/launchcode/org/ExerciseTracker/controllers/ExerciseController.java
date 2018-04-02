@@ -43,21 +43,21 @@ public class ExerciseController {
 
         model.addAttribute("title", "Add Exercise");
         exerciseDao.save(newExercise);
-        return "redirect:";
+        return "redirect:/set/add";
 
     }
 
     //views session page (when user clicks on session URL, they are directed to new page)
     //portal to view details about exercise
-    //@RequestMapping(value="view/{SessionId}", method = RequestMethod.GET)
-    //public String viewExercise(Model model, @PathVariable int ExId) {
+    @RequestMapping(value="view/{exId}", method = RequestMethod.GET)
+    public String viewExercise(Model model, @PathVariable int exId) {
 
         // pull a session ID by making an instance of the exercise class and calling DAO
-       // Exercise exercise = ExerciseDao.findOne(ExId);
-        //model.addAttribute("title", "View Exercise");
+        Exercise exercise = exerciseDao.findOne(exId);
+        model.addAttribute("title", exercise.getName());
 
-        //return "exercise/view";
-   // }
+        return "exercise/view";
+    }
 
 
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping (value = "Set")
+@RequestMapping (value = "set")
 public class SetController {
 
 
@@ -23,7 +23,7 @@ public class SetController {
     //list sets handler
     @RequestMapping(value="")
     public String index(Model model) {
-       //model.addAttribute("Set", SetDao.findAll());
+        model.addAttribute("Set", setDao.findAll());
         model.addAttribute("title", "Sets");
         return "set/index";
 
@@ -34,7 +34,7 @@ public class SetController {
     public String addSet(Model model) {
         model.addAttribute("title", "Add Set");
         model.addAttribute(new Sets());
-        return "Set/add";
+        return "set/add";
 
     }
 
