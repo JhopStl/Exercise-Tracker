@@ -24,7 +24,7 @@ public class wSession {
 
     //links to other class - one to many relationship
     @OneToMany //one Session to many exercises
-    @JoinColumn(name="session_id")
+    @JoinColumn(name="w_session_id")
     public List<Exercise> exercises = new ArrayList<>();
 
     //constructor

@@ -19,8 +19,8 @@
         <th>Date</th>
     </tr>
 
-    <tr th:each="session: ${sessions}">
-        <td><a th:href="'?id=' + ${session.id}" th:text="${session.name}"></a></td>
+    <tr th:each="session: ${wSessions}">
+        <td><a th:href="'session/view/' + ${session.id}" th:text="${session.name}"></a></td>
         <td th:text="${session.date}"></td>
     </tr>
 </table>

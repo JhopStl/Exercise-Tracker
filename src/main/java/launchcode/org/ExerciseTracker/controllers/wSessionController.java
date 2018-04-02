@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -46,16 +47,19 @@ public class wSessionController {
 
         //save workout to DB
         wSessionDao.save(newWSession);
-        return "redirect:";
+        //redirects to the exercise controller
+        return "redirect:/exercise/add";
     }
 
     //views session page (when user clicks on session URL, they are directed to new page)
-    //@RequestMapping(value="view/{sessionId}", method = RequestMethod.GET)
-    //public String viewSession(Model model, @PathVariable int id) {
+    //portal to view details about session
+    @RequestMapping(value="view/{SessionId}", method = RequestMethod.GET)
+    public String viewSession(Model model, @PathVariable int SessionId) {
 
-        //pull a session ID by making an instance of the session/workout class and calling DAO
-        //Workout workout = WorkoutDao.findOne(id);
+       // pull a session ID by making an instance of the session/workout class and calling DAO
+        wSession session = wSessionDao.findOne(SessionId);
+        model.addAttribute("title", session.getName());
 
-        //return "workout/view";
-    //}
+        return "wSession/view";
+    }
 }

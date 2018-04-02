@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -45,6 +46,18 @@ public class ExerciseController {
         return "redirect:";
 
     }
+
+    //views session page (when user clicks on session URL, they are directed to new page)
+    //portal to view details about exercise
+    //@RequestMapping(value="view/{SessionId}", method = RequestMethod.GET)
+    //public String viewExercise(Model model, @PathVariable int ExId) {
+
+        // pull a session ID by making an instance of the exercise class and calling DAO
+       // Exercise exercise = ExerciseDao.findOne(ExId);
+        //model.addAttribute("title", "View Exercise");
+
+        //return "exercise/view";
+   // }
 
 
 
