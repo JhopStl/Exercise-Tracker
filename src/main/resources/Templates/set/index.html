@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <title th:text="${title}">Title</title>
-
-    <div>
-        <nav>
-            <a href="/home">Home</a> |
-            <a href="/session/add">New Session</a>
-        </nav>
-    </div>
-</head>
+<head th:replace="fragments :: head"></head>
 <body>
+<nav th:replace="fragments :: navigation"></nav>
 <h1 th:text="${title}">Title</h1>
 <table>
     <tr>
