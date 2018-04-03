@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <title th:text="${title}">Title</title>
-
-    <div>
-        <nav>
-            <a href="/home">Home</a> |
-            <a href="/session/add">New Session</a>
-        </nav>
-    </div>
-</head>
+<head th:replace="fragments :: head"></head>
 <body>
-<h1 th:text="${title}">Title</h1>
-<table>
-    <tr>
-        <th>Session</th>
-        <th>Date</th>
-    </tr>
+<nav th:replace="fragments :: navigation"></nav>
 
-    <tr th:each="session: ${wSessions}">
-        <td><a th:href="'session/view/' + ${session.id}" th:text="${session.name}"></a></td>
-        <td th:text="${session.date}"></td>
-    </tr>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-6">
+            <h1 th:text = "${title}">Default Title</h1>
+            <table>
+                <tr>
+                    <th>Session</th>
+                    <th>Date</th>
+                </tr>
+
+                <tr th:each="session: ${wSessions}">
+                    <td><a th:href="'session/view/' + ${session.id}" th:text="${session.name}"></a></td>
+                    <td th:text="${session.date}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
