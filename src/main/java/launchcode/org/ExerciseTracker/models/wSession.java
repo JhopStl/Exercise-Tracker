@@ -23,9 +23,9 @@ public class wSession {
     private Date Date;
 
     //links to other class - one to many relationship
-    @OneToMany //one Session to many exercises
-    @JoinColumn(name="w_session_id")
-    public List<Exercise> exercises = new ArrayList<>();
+    //for every one session, there are many exercises
+    @ManyToOne //there are many exercises that can have the given session
+    private Exercise exercise;
 
     //constructor
     //these fields need to match those in the view (form fields, etc.)
@@ -61,11 +61,11 @@ public class wSession {
         Date = date;
     }
 
-    public List<Exercise> getExercises() {
-        return exercises;
+    public Exercise getExercise() {
+        return exercise;
     }
 
-    public void setExercises(List<Exercise> exercises) {
-        this.exercises = exercises;
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
     }
 }
