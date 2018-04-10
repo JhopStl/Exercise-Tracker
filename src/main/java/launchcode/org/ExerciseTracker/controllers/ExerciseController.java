@@ -2,6 +2,7 @@ package launchcode.org.ExerciseTracker.controllers;
 
 import launchcode.org.ExerciseTracker.models.Exercise;
 import launchcode.org.ExerciseTracker.models.data.ExerciseDao;
+import launchcode.org.ExerciseTracker.models.data.wSessionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ public class ExerciseController {
 
     @Autowired
     private ExerciseDao exerciseDao;
+
+    @Autowired
+    private wSessionDao wSessionDao;
 
 
     //view Exercises...if this is needed/wanted

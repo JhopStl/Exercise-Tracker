@@ -1,8 +1,6 @@
 package launchcode.org.ExerciseTracker.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Exercise {
@@ -12,9 +10,8 @@ public class Exercise {
     private int id;
     private String name;
 
-    @OneToMany //for everyone session, there are many exercises
-    @JoinColumn
-    private List<wSession> sessions = new ArrayList<>();
+    @ManyToOne //Many exercises to one session
+    private wSession wsession;
 
     //constructor
     public Exercise (String name) {
@@ -39,11 +36,11 @@ public class Exercise {
         this.name = name;
     }
 
-    public List<wSession> getSessions() {
-        return sessions;
+    public wSession getwSession() {
+        return wsession;
     }
 
-    public void setSessions(List<wSession> sessions) {
-        this.sessions = sessions;
+    public void setwSession(wSession wsession) {
+            this.wsession = wsession;
     }
 }

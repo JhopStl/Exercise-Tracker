@@ -1,5 +1,6 @@
 package launchcode.org.ExerciseTracker.controllers;
 
+import launchcode.org.ExerciseTracker.models.data.ExerciseDao;
 import launchcode.org.ExerciseTracker.models.data.wSessionDao;
 import launchcode.org.ExerciseTracker.models.wSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,8 @@ public class wSessionController {
 
     //@Autowired gives an instance of the wSessionDao class by the framework
     @Autowired
-    private wSessionDao wSessionDao;
+    wSessionDao wSessionDao;
+
 
     //handler to list workout sessions (times went to the gym)
     //Will return all the Sessions in the database
