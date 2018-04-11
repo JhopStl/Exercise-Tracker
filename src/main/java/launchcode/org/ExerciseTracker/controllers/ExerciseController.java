@@ -3,13 +3,11 @@ package launchcode.org.ExerciseTracker.controllers;
 import launchcode.org.ExerciseTracker.models.Exercise;
 import launchcode.org.ExerciseTracker.models.data.ExerciseDao;
 import launchcode.org.ExerciseTracker.models.data.wSessionDao;
+import launchcode.org.ExerciseTracker.models.wSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(value = "exercise")
@@ -19,7 +17,7 @@ public class ExerciseController {
     private ExerciseDao exerciseDao;
 
     @Autowired
-    private wSessionDao wSessionDao;
+    private wSessionDao seshDao;
 
 
     //view Exercises...if this is needed/wanted
@@ -38,17 +36,22 @@ public class ExerciseController {
 
         model.addAttribute("title", "Add Exercise");
         model.addAttribute(new Exercise());
+        model.addAttribute("sesh", seshDao.findAll());
         return "exercise/add";
     }
 
     //process add Exercise form
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processExercise(@ModelAttribute Exercise newExercise, Model model) {
+    public String processExercise(@ModelAttribute Exercise newExercise, @RequestParam int seshId, Model model) {
 
         model.addAttribute("title", "Add Exercise");
         exerciseDao.save(newExercise);
-        return "redirect:/set/add";
+       // return "redirect:/set/add";
 
+        wSession sesh = seshDao.findOne(seshId);
+        newExercise.setwSession(sesh);
+        exerciseDao.save(newExercise);
+        return "redirect:/set/add";
     }
 
     //views session page (when user clicks on session URL, they are directed to new page)

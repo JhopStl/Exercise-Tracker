@@ -11,7 +11,7 @@ public class Exercise {
     private String name;
 
     @ManyToOne //Many exercises to one session
-    private wSession wsession;
+    private wSession sesh;
 
     //constructor
     public Exercise (String name) {
@@ -37,10 +37,10 @@ public class Exercise {
     }
 
     public wSession getwSession() {
-        return wsession;
+        return sesh;
     }
 
-    public void setwSession(wSession wsession) {
-            this.wsession = wsession;
+    public void setwSession(wSession sesh) {
+            this.sesh = sesh;
     }
 }
