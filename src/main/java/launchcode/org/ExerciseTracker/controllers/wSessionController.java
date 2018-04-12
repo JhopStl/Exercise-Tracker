@@ -39,7 +39,7 @@ public class wSessionController {
 
         model.addAttribute("title", "Add Session");
         model.addAttribute(new wSession());
-        return "wSession/testAdd";
+        return "wSession/add";
     }
     //creates a new wSession object and saves it to DB
     @RequestMapping(value="add", method = RequestMethod.POST)
