@@ -19,7 +19,6 @@ public class ExerciseController {
     @Autowired
     private wSessionDao seshDao;
 
-
     //view Exercises...if this is needed/wanted
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -31,12 +30,14 @@ public class ExerciseController {
     //add new Exercise form
     //handler to display add Templates.exercise form
     //will need to add this form and tie it to the session id...one to many relationship
-    @RequestMapping(value = "add", method = RequestMethod.GET)
+    //@RequestMapping(value = "add", method = RequestMethod.GET)
+
+    @GetMapping("add")
     public String addExercise(Model model) {
 
         model.addAttribute("title", "Add Exercise");
         model.addAttribute(new Exercise());
-        model.addAttribute("sesh", seshDao.findAll());
+        model.addAttribute("sessions", seshDao.findAllByOrderByIdDesc());
         return "exercise/add";
     }
 
