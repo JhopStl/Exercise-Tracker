@@ -6,10 +6,7 @@ import launchcode.org.ExerciseTracker.models.wSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(value = "session")
@@ -45,12 +42,14 @@ public class wSessionController {
     @RequestMapping(value="add", method = RequestMethod.POST)
     public String processSession(@ModelAttribute wSession newWSession, Model model) {
 
-        model.addAttribute("title", "Add Session");
-
         //save workout to DB
         wSessionDao.save(newWSession);
-        //redirects to the exercise controller
-        return "redirect:/exercise/add";
+        //grab id of new session
+       int seshId = newWSession.getId();
+        model.addAttribute("title", "Add Session");
+        //model.addAttribute("seshId", seshId);
+        //redirects to the exercise controller and passes the wSession ID
+        return "redirect:/exercise/add/" + seshId;
     }
 
     //views session page (when user clicks on session URL, they are directed to new page)

@@ -32,23 +32,26 @@ public class ExerciseController {
     //will need to add this form and tie it to the session id...one to many relationship
     //@RequestMapping(value = "add", method = RequestMethod.GET)
 
-    @GetMapping("add")
-    public String addExercise(Model model) {
+    //handles this url
+    @GetMapping("add/{seshId}")
+    public String addExercise(Model model, @PathVariable int seshId) {
 
+        wSession wsessionId = seshDao.findOne(seshId);
         model.addAttribute("title", "Add Exercise");
         model.addAttribute(new Exercise());
+
+        //no matter, what will pull a list of the most recently added session ID
         model.addAttribute("sessions", seshDao.findAllByOrderByIdDesc());
+        //return exercise/add view
         return "exercise/add";
     }
 
     //process add Exercise form
-    @RequestMapping(value = "add", method = RequestMethod.POST)
+    @RequestMapping(value = "add/{seshId}", method = RequestMethod.POST)
     public String processExercise(@ModelAttribute Exercise newExercise, @RequestParam int seshId, Model model) {
 
         model.addAttribute("title", "Add Exercise");
         exerciseDao.save(newExercise);
-       // return "redirect:/set/add";
-
         wSession sesh = seshDao.findOne(seshId);
         newExercise.setwSession(sesh);
         exerciseDao.save(newExercise);

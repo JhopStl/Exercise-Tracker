@@ -11,9 +11,19 @@
         <div class="col-6">
             <h1 th:text = "${title}">Default Title</h1>
             <form method="POST">
-                <input type="number" name="reps" /><br/><br/>
-                <input type="number" name ="weight" />
-                <input type="submit" value="Add Set" />
+                <div class="form-group">
+                    <span>
+                    <label th:for="reps">Reps:</label>
+                <input class = "form-control" type="text" id="reps" name="reps" />
+                        </span>
+                </div>
+                <div class = "form-group">
+                    <label th:for="weight">@ Weight:</label>
+                    <input class="form-control" type="text" id="weight" name ="weight" />
+                </div>
+                <div class="form-group">
+                <input class="form-control btn-secondary" type="submit" value="Add Set" />
+            </div>
             </form>
 
         </div>

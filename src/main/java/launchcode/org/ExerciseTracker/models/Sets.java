@@ -16,8 +16,7 @@ public class Sets {
     private double weight;
 
     //constructor
-    public Sets (int id, int rep, double weight) {
-        this.id = id;
+    public Sets (int rep, double weight) {
         this.rep = rep;
         this.weight = weight;
     }
