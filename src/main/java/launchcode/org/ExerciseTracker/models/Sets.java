@@ -3,6 +3,7 @@ package launchcode.org.ExerciseTracker.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Sets {
@@ -11,9 +12,11 @@ public class Sets {
     @GeneratedValue
     private int id;
 
-
     private int rep;
     private double weight;
+
+    @ManyToOne //many sets to one exercise
+    private Exercise exercise;
 
     //constructor
     public Sets (int rep, double weight) {
@@ -45,5 +48,13 @@ public class Sets {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public Exercise getExercise() {
+        return exercise;
+    }
+
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
     }
 }

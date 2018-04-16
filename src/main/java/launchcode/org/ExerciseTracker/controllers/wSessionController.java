@@ -52,7 +52,7 @@ public class wSessionController {
     }
 
     //views session page (when user clicks on session URL, they are directed to new page)
-    //portal to view details about session
+    //page to view details about session
     @RequestMapping(value="view/{SessionId}", method = RequestMethod.GET)
     public String viewSession(Model model, @PathVariable int SessionId) {
 

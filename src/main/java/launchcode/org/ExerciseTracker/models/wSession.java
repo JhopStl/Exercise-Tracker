@@ -22,9 +22,8 @@ public class wSession {
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date Date;
 
-    //links to other class - one to many relationship
-    //for every one session, there are many exercises
-    @OneToMany
+    //for the wSession and exercise relationship
+    @OneToMany//one wSession for many exercises
     @JoinColumn(name="sesh_id")
     private List<Exercise> exercises = new ArrayList<>();
 
