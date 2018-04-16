@@ -47,7 +47,6 @@ public class wSessionController {
         //grab id of new session
        int seshId = newWSession.getId();
         model.addAttribute("title", "Add Session");
-        //model.addAttribute("seshId", seshId);
         //redirects to the exercise controller and passes the wSession ID
         return "redirect:/exercise/add/" + seshId;
     }
@@ -57,7 +56,7 @@ public class wSessionController {
     @RequestMapping(value="view/{SessionId}", method = RequestMethod.GET)
     public String viewSession(Model model, @PathVariable int SessionId) {
 
-       // pull a session ID by making an instance of the session/workout class and calling DAO
+       // pull a session ID by making an instance of the wSession class and calling DAO to pull the sessionId
         wSession session = wSessionDao.findOne(SessionId);
         model.addAttribute("title", session.getName());
 

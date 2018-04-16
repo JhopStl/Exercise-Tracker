@@ -48,10 +48,12 @@ public class ExerciseController {
 
     //process add Exercise form
     @RequestMapping(value = "add/{seshId}", method = RequestMethod.POST)
-    public String processExercise(@ModelAttribute Exercise newExercise, @RequestParam int seshId, Model model) {
+    public String processExercise(@ModelAttribute Exercise newExercise, Model model, @PathVariable int seshId) {
 
+        //, @RequestParam int seshId
         model.addAttribute("title", "Add Exercise");
         exerciseDao.save(newExercise);
+
         wSession sesh = seshDao.findOne(seshId);
         newExercise.setwSession(sesh);
         exerciseDao.save(newExercise);
