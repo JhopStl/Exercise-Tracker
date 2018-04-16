@@ -27,19 +27,14 @@ public class ExerciseController {
         return "exercise/index";
     }
 
-    //add new Exercise form
-    //handler to display add Templates.exercise form
-    //will need to add this form and tie it to the session id...one to many relationship
-    //@RequestMapping(value = "add", method = RequestMethod.GET)
-
-    //handles this url
+    //handler to display add exercise form
+    //use @PathVariable to pull in session ID from URL
     @GetMapping("add/{seshId}")
     public String addExercise(Model model, @PathVariable int seshId) {
 
         wSession wsessionId = seshDao.findOne(seshId);
         model.addAttribute("title", "Add Exercise");
         model.addAttribute(new Exercise());
-
         //no matter, what will pull a list of the most recently added session ID
         model.addAttribute("sessions", seshDao.findAllByOrderByIdDesc());
         //return exercise/add view
@@ -51,7 +46,7 @@ public class ExerciseController {
     public String processExercise(@ModelAttribute Exercise newExercise, Model model, @PathVariable int seshId) {
 
         model.addAttribute("title", "Add Exercise");
-        exerciseDao.save(newExercise);
+        //exerciseDao.save(newExercise);
 
         wSession sesh = seshDao.findOne(seshId);
         newExercise.setwSession(sesh);
@@ -59,7 +54,7 @@ public class ExerciseController {
 
         //grab exercise Id and add to the redirect
         int exId = newExercise.getId();
-        return "redirect:/set/add";
+        return "redirect:/set/add/" + exId;
     }
 
     //views session page (when user clicks on session URL, they are directed to new page)

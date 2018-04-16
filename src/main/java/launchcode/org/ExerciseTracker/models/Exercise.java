@@ -18,7 +18,7 @@ public class Exercise {
 
     //for the Sets and Exercise relationship
     @OneToMany //One exercise to many sets
-    @JoinColumn (name="ex_id")
+    @JoinColumn (name="exercise_id") //if it's different from the exercise instance declared in "sets" then it will create separate fields
     private List<Sets> sets = new ArrayList<>();
 
 
