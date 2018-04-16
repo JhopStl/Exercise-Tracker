@@ -50,13 +50,15 @@ public class ExerciseController {
     @RequestMapping(value = "add/{seshId}", method = RequestMethod.POST)
     public String processExercise(@ModelAttribute Exercise newExercise, Model model, @PathVariable int seshId) {
 
-        //, @RequestParam int seshId
         model.addAttribute("title", "Add Exercise");
         exerciseDao.save(newExercise);
 
         wSession sesh = seshDao.findOne(seshId);
         newExercise.setwSession(sesh);
         exerciseDao.save(newExercise);
+
+        //grab exercise Id and add to the redirect
+        int exId = newExercise.getId();
         return "redirect:/set/add";
     }
 
