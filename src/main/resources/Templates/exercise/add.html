@@ -16,14 +16,14 @@
                 <input class = "form-control" type="text" name="name" />
                     </div>
 
-                <div class="form-group">
+                <!--div class="form-group" style = "display:none;">
                     <label th:for="type">Session</label>
                     <select name="seshId">
                         <option th:each="sesh : ${sessions}"
                                 th:text="${sesh.name}"
                                 th:value="${sesh.id}"></option>
                     </select>
-                </div>
+                </div-->
 
                 <div class="form-group">
                 <input class="form-control btn-secondary" type="submit" value="Add" />

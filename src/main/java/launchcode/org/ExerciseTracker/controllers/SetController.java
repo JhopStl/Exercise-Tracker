@@ -23,10 +23,9 @@ public class SetController {
     //list sets handler
     @RequestMapping(value="")
     public String index(Model model) {
-        model.addAttribute("Set", setDao.findAll());
+        model.addAttribute("Sets", setDao.findAll());
         model.addAttribute("title", "Sets");
         return "set/index";
-
     }
 
     //handler to display add Set form
