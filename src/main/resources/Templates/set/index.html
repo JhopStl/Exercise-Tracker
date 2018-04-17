@@ -9,12 +9,14 @@
         <div class="col">
         </div>
         <div class="col-6">
-            <h1 th:text = "${title}">Default Title</h1>
-            <table>
+            <h1 style ="text-align: center;padding:10px;" th:text = "${title}">Default Title</h1>
+            <table class="table">
+            <thead class = "thead-light">
                 <tr>
                     <th>Reps</th>
                     <th>Weight</th>
                 </tr>
+            </thead>
 
                 <tr th:each="set: ${Sets}">
                     <td th:text="${set.rep}"></td>

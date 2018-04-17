@@ -3,18 +3,19 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <nav th:replace="fragments :: navigation"></nav>
-<h1 th:text="${title}">Title</h1>
 
 <div class="container">
     <div class="row">
         <div class="col">
         </div>
-        <div class="col-6">
-            <h1 th:text = "${title}">Default Title</h1>
-            <table>
+        <div style="background-color: #f0f0f5;" class="col-8">
+            <h1 style ="text-align: center;padding:10px;" th:text = "${title}">Default Title</h1>
+            <table class="table">
+                <thead class = "thead-light">
                 <tr>
                     <th>Exercise</th>
                 </tr>
+                </thead>
 
                 <tr th:each="exercise: ${exercises}">
                     <td><a th:href="'exercise/view/' + ${exercise.id}" th:text="${exercise.name}"></a></td>
