@@ -54,9 +54,10 @@ public class SetController {
         Exercise exercise = exerciseDao.findOne(exId);
         newSet.setExercise(exercise);
         setDao.save(newSet);
+        model.addAttribute("exId", exId);
 
 
-        return "redirect:/set/";
+        return "set/index";
     }
 
 
