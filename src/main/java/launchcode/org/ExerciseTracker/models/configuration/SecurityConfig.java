@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -28,12 +28,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
-        throws Exception {
+            throws Exception {
         auth.
                 jdbcAuthentication()
-                    .usersByUsernameQuery(usersQuery)
-                    .dataSource(dataSource)
-                    .passwordEncoder(bCryptPasswordEncoder);
+                .usersByUsernameQuery(usersQuery)
+                .dataSource(dataSource)
+                .passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override
