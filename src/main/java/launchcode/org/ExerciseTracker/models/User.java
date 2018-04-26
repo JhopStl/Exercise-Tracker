@@ -24,8 +24,8 @@ public class User {
     private String email;
 
     @NotEmpty(message = "*Please provide a password")
-    @Length(min=5, max=12, message = "*Your password must be between 5 and 12 characters")
-    @Transient
+    //@Length(min=5, max=12, message = "*Your password must be between 5 and 12 characters")
+    //@Transient
     private String password;
 
     private int active;
