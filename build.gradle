@@ -34,10 +34,6 @@ dependencies {
 	//compile ("org.springframework.boot:spring-boot-starter-tomcat")
 	compile ("org.springframework.boot:spring-boot-starter-security")
 	compile ("net.sourceforge.nekohtml:nekohtml:1.9.21")
-	//compile ("javax.servlet:jstl")
-	//compile ("org.apache.tomcat.embed:tomcat-embed-jasper")
-	//compile ("org.springframework.boot:spring-boot-starter-data-jpa:*")
-	//compile ("commons-dbcp:commons-dbcp")
 }
 
 bootRun {
