@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<nav th:replace="fragments :: navigation"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-6">
+            <h1 style ="text-align: center;padding:10px;" th:text = "${title}">Default Title</h1>
+            <table class="table">
+                <thead class = "thead-light">
+                <tr>
+                    <th>Session</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+
+                <tr th:each="session: ${wSessions}">
+                    <td><a th:href="'session/view/' + ${session.id}" th:text="${session.name}"></a></td>
+                    <td th:text="${session.date}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
