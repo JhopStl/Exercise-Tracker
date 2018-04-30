@@ -4,16 +4,15 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Set;
 
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @NotEmpty(message = "*Username is required")
@@ -24,11 +23,18 @@ public class User {
     private String email;
 
     @NotEmpty(message = "*Please provide a password")
-    @Length(min=5, max=12, message = "*Your password must be between 5 and 12 characters")
-    @Transient
+    @Column(name="password")
+    //@Length(min=5, max=12, message = "*Your password must be between 5 and 12 characters")
+    //@Transient
     private String password;
 
     private int active;
+
+    //handles the many to many join between user and role
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="user_role", joinColumns = @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="role_id"))
+    //stores the roles that have been joined
+    private Set<Role> roles;
 
     //constructor
     public User (String userName, String email, String password, int active){
@@ -36,6 +42,8 @@ public class User {
         this.email = email;
         this.password = password;
         this.active = active;
+
+
     }
 
     //default constructor
@@ -78,5 +86,13 @@ public class User {
 
     public void setActive(int active) {
         this.active = active;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
