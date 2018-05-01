@@ -1,7 +1,9 @@
 package launchcode.org.ExerciseTracker.controllers;
 
 
+import launchcode.org.ExerciseTracker.models.Role;
 import launchcode.org.ExerciseTracker.models.User;
+import launchcode.org.ExerciseTracker.models.data.RoleDao;
 import launchcode.org.ExerciseTracker.models.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,6 +23,9 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RoleDao roleDao;
+
     @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
@@ -32,6 +37,10 @@ public class LoginController {
     @RequestMapping(value="/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
+        //initialize the role table to have the role of "USER"
+        Role role = new Role(1, "USER");
+        roleDao.save(role);
+
         User user = new User();
         modelAndView.addObject("user", user);
         modelAndView.setViewName("login/registration");

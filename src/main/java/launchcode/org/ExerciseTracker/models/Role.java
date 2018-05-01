@@ -11,6 +11,14 @@ public class Role {
     @Column(name="role")
     private String role;
 
+    //constructor
+    public Role (int id, String role) {
+        this.id = id;
+        this.role = role;
+    }
+    //default constructor
+    public Role () {};
+
     public int getId() {
         return id;
     }

@@ -5,13 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "home")
+@RequestMapping(value = "welcome")
 public class HomeController {
 
     @RequestMapping(value="")
     public String index(Model model) {
         model.addAttribute("title", "GainzTracker");
-        return "home/index";
+        return "home/welcome";
 
     }
 }
