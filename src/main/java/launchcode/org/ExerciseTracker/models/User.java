@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -35,6 +36,11 @@ public class User {
     @JoinTable(name="user_role", joinColumns = @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="role_id"))
     //stores the roles that have been joined
     private Set<Role> roles;
+
+    //for the wSession and user relationship
+    @OneToMany
+    @JoinTable(name = "user_id")
+    private List<wSession> wSessions = new ArrayList<>();
 
     //constructor
     public User (String userName, String email, String password, int active){
@@ -94,5 +100,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<wSession> getwSessions() {
+        return wSessions;
+    }
+
+    public void setwSessions(List<wSession> wSessions) {
+        this.wSessions = wSessions;
     }
 }

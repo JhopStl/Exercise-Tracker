@@ -27,6 +27,10 @@ public class wSession {
     @JoinColumn(name="sesh_id")
     private List<Exercise> exercises = new ArrayList<>();
 
+    //for the wSession and user relationship
+    @ManyToOne//many wSession to one User
+    private User user;
+
     //constructor
     //these fields need to match those in the view (form fields, etc.)
     public wSession (String name, Date date) {
@@ -62,4 +66,12 @@ public class wSession {
     }
 
     public List<Exercise> getExercises() { return exercises; }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
