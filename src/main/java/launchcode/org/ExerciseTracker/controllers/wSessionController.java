@@ -1,11 +1,13 @@
 package launchcode.org.ExerciseTracker.controllers;
 
 import launchcode.org.ExerciseTracker.models.User;
+import launchcode.org.ExerciseTracker.models.data.AuthenticationFacade;
 import launchcode.org.ExerciseTracker.models.data.ExerciseDao;
 import launchcode.org.ExerciseTracker.models.data.wSessionDao;
 import launchcode.org.ExerciseTracker.models.service.UserService;
 import launchcode.org.ExerciseTracker.models.wSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,9 @@ public class wSessionController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AuthenticationFacade authenticationFacade;
     
     //handler to list workout sessions (times went to the gym)
     //Will return all the Sessions in the database
@@ -48,6 +53,8 @@ public class wSessionController {
         //int userId = user.getId();
         //save session to DB
         //first tie user to session
+        Authentication authentication = authenticationFacade.getAuthentication();
+        String userName = authentication.getName();
         //User user = userService.findUserById(userId);
         //newWSession.setUser(user);
         wSessionDao.save(newWSession);
