@@ -25,10 +25,10 @@ public class LoginController {
     @Autowired
     private RoleDao roleDao;
 
-    @RequestMapping(value={"/", "/Templates/login"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/", "login"}, method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("Templates/login/Templates.login");
+        modelAndView.setViewName("login/login");
         return modelAndView;
     }
 
@@ -42,7 +42,7 @@ public class LoginController {
 
         User user = new User();
         modelAndView.addObject("user", user);
-        modelAndView.setViewName("Templates/login/registration");
+        modelAndView.setViewName("login/registration");
         return modelAndView;
     }
 
@@ -56,12 +56,12 @@ public class LoginController {
                             "There is already a user registered with the email provided");
         }
         if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("Templates/login/registration");
+            modelAndView.setViewName("login/registration");
         } else {
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("Templates/login/registration");
+            modelAndView.setViewName("login/registration");
 
         }
         return modelAndView;
