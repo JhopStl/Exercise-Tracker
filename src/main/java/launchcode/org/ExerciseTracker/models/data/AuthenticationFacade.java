@@ -1,5 +1,6 @@
 package launchcode.org.ExerciseTracker.models.data;
 
+import launchcode.org.ExerciseTracker.models.data.IAuthentication;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
