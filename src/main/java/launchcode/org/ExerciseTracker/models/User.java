@@ -39,7 +39,7 @@ public class User {
 
     //for the wSession and user relationship
     @OneToMany
-    @JoinTable(name = "user_id")
+    @JoinColumn(name = "user_id")
     private List<wSession> wSessions = new ArrayList<>();
 
     //constructor
