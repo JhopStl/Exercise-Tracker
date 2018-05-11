@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class = "navbar-brand" href="#">GainzTracker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--div class ="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class ="navbar-nav">
+            <a class="nav-item nav-link active" href="/session/add">New Session<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/home">Home</a>
+        </div>
+    </div-->
+    <div class ="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class ="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="/login">Sign In</a>
+            <!--a class="nav-item nav-link" href="/registration">Register</a-->
+        </div>
+    </div>
+</nav>
+
+<header class="welcome_gym text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <h1 class="mb-5">Start tracking your workout today!</h1>
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-5 mx-auto">
+
+                <!--form th:action = "@{/registration}">
+                    <div class="form-row">
+                        <div class="col-12 col-md-9 mb-2 mb-md-0">
+                            <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
+                        </div>
+                        <div  class="col-12 col-md-3">
+                            <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+                        </div>
+                    </div>
+                </form-->
+                <form>
+                    <div class="form-group">
+                        <div class="col-12 col-md-9 mb-2 mb-md-0 mx-auto">
+                            <input type="email" class="form-control form-control-lg" placeholder="Enter your email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12 col-md-9 mb-2 mb-md-0 mx-auto">
+                            <input type="text" class="form-control form-control-lg" placeholder="Enter a username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-12 col-md-9 mb-2 mb-md-0 mx-auto">
+                            <input type="password" class="form-control form-control-lg" placeholder="Enter a password">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div  class="col-12 col-md-5 mx-auto">
+                            <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+</html>
