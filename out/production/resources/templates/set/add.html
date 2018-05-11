@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<nav th:replace="fragments :: navigation"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-6">
+            <h1 th:text = "${title}">Default Title</h1>
+            <form method="POST">
+                <div class="form-group">
+                    <span>
+                    <label th:for="reps">Reps:</label>
+                <input class = "form-control" type="number" id="reps" name="rep" />
+                        </span>
+                </div>
+                <div class = "form-group">
+                    <label th:for="weight">@ Weight:</label>
+                    <input class="form-control" type="text" id="weight" name ="weight" />
+                </div>
+                <div class="form-group">
+                <input class="form-control btn-secondary" type="submit" value="Add Set" />
+            </div>
+            </form>
+
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+</body>
+</html>
