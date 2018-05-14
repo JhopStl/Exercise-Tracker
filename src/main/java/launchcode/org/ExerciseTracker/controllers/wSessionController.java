@@ -61,7 +61,7 @@ public class wSessionController {
         //grab id of new session
        int seshId = newWSession.getId();
        //need to grab user Id
-
+        model.addAttribute("username", userName);
         model.addAttribute("title", "Add Session");
         //redirects to the exercise controller and passes the wSession ID
         return "redirect:/exercise/add/" + seshId;
