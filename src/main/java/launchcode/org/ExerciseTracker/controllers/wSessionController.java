@@ -43,6 +43,12 @@ public class wSessionController {
     @RequestMapping(value="add", method = RequestMethod.GET)
     public String addSession(Model model) {
 
+        Authentication authentication = authenticationFacade.getAuthentication();
+        String userName = authentication.getName();
+        User user2 = userService.findUserByEmail(userName);
+
+        model.addAttribute("username", userName);
+        model.addAttribute("username2",user2.getId());
         model.addAttribute("title", "Add Session");
         model.addAttribute(new wSession());
         return "wSession/add";
@@ -53,15 +59,12 @@ public class wSessionController {
         //int userId = user.getId();
         //save session to DB
         //first tie user to session
-        Authentication authentication = authenticationFacade.getAuthentication();
-        String userName = authentication.getName();
         //User user = userService.findUserById(userId);
         //newWSession.setUser(user);
         wSessionDao.save(newWSession);
         //grab id of new session
        int seshId = newWSession.getId();
        //need to grab user Id
-        model.addAttribute("username", userName);
         model.addAttribute("title", "Add Session");
         //redirects to the exercise controller and passes the wSession ID
         return "redirect:/exercise/add/" + seshId;
