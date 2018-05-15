@@ -43,12 +43,12 @@ public class wSessionController {
     @RequestMapping(value="add", method = RequestMethod.GET)
     public String addSession(Model model) {
 
+        //uses the Authentication class to call a method that finds active user
         Authentication authentication = authenticationFacade.getAuthentication();
-        String userName = authentication.getName();
-        User user2 = userService.findUserByEmail(userName);
+        User activeUser = userService.findUserByEmail(authentication.getName());
 
-        model.addAttribute("username", userName);
-        model.addAttribute("username2",user2.getId());
+        model.addAttribute("username", activeUser.getUserName());
+        model.addAttribute("userId",activeUser.getId());
         model.addAttribute("title", "Add Session");
         model.addAttribute(new wSession());
         return "wSession/add";
@@ -56,11 +56,16 @@ public class wSessionController {
     //creates a new wSession object and saves it to DB
     @RequestMapping(value="add", method = RequestMethod.POST)
     public String processSession(@ModelAttribute wSession newWSession, Model model) {
-        //int userId = user.getId();
+
         //save session to DB
         //first tie user to session
         //User user = userService.findUserById(userId);
-        //newWSession.setUser(user);
+
+        //Pull active user ID
+        Authentication authentication = authenticationFacade.getAuthentication();
+        User activeUser = userService.findUserByEmail(authentication.getName());
+        int userId = activeUser.getId();
+        newWSession.setUser(activeUser);
         wSessionDao.save(newWSession);
         //grab id of new session
        int seshId = newWSession.getId();
