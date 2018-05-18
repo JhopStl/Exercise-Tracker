@@ -29,7 +29,8 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-9 mx-auto">
-                <h1 class="mb-5">Start tracking your workout today!</h1>
+                <h1 class="mb-5">Simply log workouts and view exercise history with GainzTracker</h1>
+                <h3 class="mb-5">Start tracking your gainz today!</h3>
             </div>
             <div class="col-md-8 col-lg-6 col-xl-5 mx-auto">
 
@@ -42,9 +43,9 @@
                             <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
                         </div>
                     </div>
-                </form-->
+                </form>
                 <form>
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <div class="col-12 col-md-9 mb-2 mb-md-0 mx-auto">
                             <input type="email" class="form-control form-control-lg" placeholder="Enter your email">
                         </div>
@@ -58,11 +59,12 @@
                         <div class="col-12 col-md-9 mb-2 mb-md-0 mx-auto">
                             <input type="password" class="form-control form-control-lg" placeholder="Enter a password">
                         </div>
-                    </div>
+                    </div-->
+                    <form th:action = "@{/registration}">
 
                     <div class="form-row">
                         <div  class="col-12 col-md-5 mx-auto">
-                            <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+                            <button type="submit" class="btn btn-block btn-lg btn-primary">Sign me up!</button>
                         </div>
                     </div>
 
@@ -71,5 +73,21 @@
         </div>
     </div>
 </header>
+<!--Extra content -->
+<section class="py-5">
+    <div class="container">
+        <h1>"GainzTracker changed my life!"</h1>
+        <p>-No one yet</p>
+        <div></div>
+        <div></div>
+    </div>
+</section>
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+    <!-- /.container -->
+</footer>
 </body>
 </html>
