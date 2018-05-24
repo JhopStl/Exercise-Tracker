@@ -50,3 +50,12 @@ header.welcome_gym .overlay {
 header.welcome_gym h1 {
   font-size: 2rem;
 }
+
+.section {
+padding-bottom: 10rem!important;
+}
+
+.footer {
+min-height:100%;
+z-index: $zindex-fixed;
+}
