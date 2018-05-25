@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head">
+</head>
 <body>
 <nav th:replace="fragments :: navigation"></nav>
 
@@ -10,7 +11,7 @@
         </div>
         <div class="col-6">
             <h1 th:text = "${title}">Default Title</h1>
-            <form method="POST">
+            <!--form method="POST">
                 <div class="form-group">
                     <span>
                     <label th:for="reps">Reps:</label>
@@ -24,7 +25,19 @@
                 <div class="form-group">
                 <input class="form-control btn-secondary" type="submit" value="Add Set" />
             </div>
+            </form-->
+
+            <form method = "POST">
+                <label th:for="reps">Reps</label>
+                 <input type="number" name="rep" id="reps" />
+                <label th:for="weight">@ Weight:</label>
+                    <input type="text" name="weight" />
+                <input type="submit" value = "Finish Set" />
             </form>
+            <br>
+            <button>Add Set</button>
+
+
 
         </div>
         <div class="col">
@@ -32,4 +45,5 @@
     </div>
 </div>
 </body>
+<script src = "/js/addSet.js"></script>
 </html>
