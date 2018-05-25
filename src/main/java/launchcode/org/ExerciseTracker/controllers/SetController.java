@@ -47,13 +47,13 @@ public class SetController {
     //process and add new Set object
     @RequestMapping(value="add/{exId}", method = RequestMethod.POST)
     public String processSet(@ModelAttribute Sets newSet, Model model, @PathVariable int exId) {
-
-        model.addAttribute("title", "Add Set");
         //setDao.save(newSet);
 
         Exercise exercise = exerciseDao.findOne(exId);
+        model.addAttribute("title", "Add Set - " + exercise.getName());
         newSet.setExercise(exercise);
         setDao.save(newSet);
+        model.addAttribute("Sets", setDao.findById(exId));
         model.addAttribute("exId", exId);
 
 

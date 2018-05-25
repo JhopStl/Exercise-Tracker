@@ -1,5 +1,4 @@
-var count=1;
-function create() {
-count++;
-document.getElementById('addSet').innerHTML+='<br/><input type="text" id="'+count+'" placeholder="Input Field'+count+'"  /><br/>';
-e.prventDefault();}
+$("button").click(function(){
+var count = $("input").length + 1;
+ $("form").prepent("<input type='text' value='add set'" + count + "' name='add set" + count + "'><br>");
+});

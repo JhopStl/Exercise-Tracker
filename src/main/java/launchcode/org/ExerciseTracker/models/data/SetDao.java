@@ -9,4 +9,5 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface SetDao extends CrudRepository <Sets, Integer> {
+    Sets findById(int id);
 }
