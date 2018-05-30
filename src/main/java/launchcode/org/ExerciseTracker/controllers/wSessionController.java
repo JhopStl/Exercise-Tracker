@@ -47,8 +47,8 @@ public class wSessionController {
         Authentication authentication = authenticationFacade.getAuthentication();
         User activeUser = userService.findUserByEmail(authentication.getName());
 
-        model.addAttribute("username", activeUser.getUserName());
-        model.addAttribute("userId",activeUser.getId());
+        model.addAttribute("username", "Welcome " + activeUser.getUserName());
+        model.addAttribute("userId","UserId: " + activeUser.getId());
         model.addAttribute("title", "Add Session");
         model.addAttribute(new wSession());
         return "wSession/add";

@@ -27,15 +27,16 @@
             </div>
             </form-->
 
-            <form method = "POST">
+            <form method = "POST" id="set-form">
                 <label th:for="reps">Reps</label>
                  <input type="number" name="rep" id="reps" />
                 <label th:for="weight">@ Weight:</label>
                     <input type="text" name="weight" />
-                <!--input type="submit" value = "Finish Set" /-->
+                <!--input type="submit" id="submit-form" value = "Finish Set" style = "visibility:hidden;" /-->
             </form>
             <br>
-            <button>Add Set</button>
+            <button id = "add-set">Add Set</button>
+            <button form="set-form">Finish</button>
 
 
 
