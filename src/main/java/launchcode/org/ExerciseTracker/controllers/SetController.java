@@ -1,6 +1,7 @@
 package launchcode.org.ExerciseTracker.controllers;
 
 import launchcode.org.ExerciseTracker.models.Exercise;
+import launchcode.org.ExerciseTracker.models.SetList;
 import launchcode.org.ExerciseTracker.models.Sets;
 import launchcode.org.ExerciseTracker.models.data.ExerciseDao;
 import launchcode.org.ExerciseTracker.models.data.SetDao;
@@ -9,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping (value = "set")
@@ -47,8 +51,17 @@ public class SetController {
     //process and add new Set object
     @RequestMapping(value="add/{exId}", method = RequestMethod.POST)
     public String processSet(@ModelAttribute Sets newSet, Model model, @PathVariable int exId) {
-        //setDao.save(newSet);
+        //initialize empty array list to hold multiple sets
+        List<Sets> SetList = new ArrayList<Sets>();
+        for(int i=0;i<6;i++){
+            SetList.add(newSet);
 
+        }
+
+        //add set(s) to list
+        //pull sets from list and save each one to DB
+
+        //pull exercise ID
         Exercise exercise = exerciseDao.findOne(exId);
         model.addAttribute("title", "Add Set - " + exercise.getName());
         newSet.setExercise(exercise);
