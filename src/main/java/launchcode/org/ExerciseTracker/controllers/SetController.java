@@ -1,6 +1,7 @@
 package launchcode.org.ExerciseTracker.controllers;
 
 import launchcode.org.ExerciseTracker.models.Exercise;
+import launchcode.org.ExerciseTracker.models.Forms.SetForm;
 import launchcode.org.ExerciseTracker.models.SetList;
 import launchcode.org.ExerciseTracker.models.Sets;
 import launchcode.org.ExerciseTracker.models.data.ExerciseDao;
@@ -47,31 +48,51 @@ public class SetController {
         return "set/add";
 
     }
-
-    //process and add new Set object
-    @RequestMapping(value="add/{exId}", method = RequestMethod.POST)
-    public String processSet(@ModelAttribute Sets newSet, Model model, @PathVariable int exId) {
-        //initialize empty array list to hold multiple sets
-        List<Sets> SetList = new ArrayList<Sets>();
-        for(int i=0;i<6;i++){
-            SetList.add(newSet);
-
+    //defining SetListForm object.  Allows access to the setlistForm object in view
+    @ModelAttribute("setForm")
+    public SetForm populateSets() {
+        //initialize the Sets list
+        SetForm setForm = new SetForm();
+        ArrayList<Sets> setsList = new ArrayList<Sets>();
+        //creates 6 empty Sets objects
+        for (int i=0; i<6; i++) {
+            setsList.add(new Sets());
         }
+        setForm.setSetsList(setsList);
+        return setForm;
+    }
 
-        //add set(s) to list
-        //pull sets from list and save each one to DB
-
-        //pull exercise ID
-        Exercise exercise = exerciseDao.findOne(exId);
-        model.addAttribute("title", "Add Set - " + exercise.getName());
-        newSet.setExercise(exercise);
-        setDao.save(newSet);
-        model.addAttribute("Sets", setDao.findById(exId));
-        model.addAttribute("exId", exId);
-
-
+    @RequestMapping(value ="add/{exId}", method=RequestMethod.POST)
+    public String saveSetForm(@ModelAttribute("setForm") SetForm setForm, Model model, @PathVariable int exId){
+        for(Sets sets : setForm.getSetsList()) {
+            //Create a new exercise from the ID that has pulled via URL (using @PathVariable to pull)
+            Exercise exercise = exerciseDao.findOne(exId);
+            model.addAttribute("title", "Add Set - " + exercise.getName());
+            //for each set, tie that to the new exercise that was created above
+            sets.setExercise(exercise);
+            setDao.save(sets);
+            model.addAttribute("Sets", setDao.findById(exId));
+            model.addAttribute("exId", exId);
+        }
         return "set/index";
     }
+
+    //process and add new Set object
+    //@RequestMapping(value="add/{exId}", method = RequestMethod.POST)
+    //public String processSet(@ModelAttribute Sets newSet, Model model, @PathVariable int exId) {
+
+        //pull exercise ID
+        //Exercise exercise = exerciseDao.findOne(exId);
+        //model.addAttribute("title", "Add Set - " + exercise.getName());
+        //newSet.setExercise(exercise);
+        //setDao.save(newSet);
+        //model.addAttribute("Sets", setDao.findById(exId));
+        //model.addAttribute("exId", exId);
+
+
+        //return "set/index";
+    //}
+
 
 
 }

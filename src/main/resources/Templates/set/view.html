@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
 <body>
+<nav th:replace="fragments :: navigation"></nav>
+
+<td th:each="Sets : ${setsList}">
+    <td th:text="${Sets.getRep()}"></td>
+</tr>
+
+
 
 </body>
 </html>
