@@ -41,14 +41,13 @@
             </div>
             </form-->
 
-            <form th: object="" method = "POST" id="set-form">
+            <form th:object="${setForm}" method = "POST" id="set-form">
                 <!--label th:for="reps">Reps</label-->
                 <!--label th:for="weight">@ Weight:</label-->
-                <c:forEach items =
-                <div class="input-group">
-                    <input class= "form-control" type="number" name="rep" id="reps"/>
+                <div th:each="sets, row : *{setsList}" class="input-group">
+                    <input class= "form-control" type="number" th:field="*{setsList[__${row.index}__].rep}" name="rep" id="reps"/>
                     <span class="input-group-addon">-</span>
-                    <input class="form-control" type="text" name="weight" placeholder="Enter weight..." />
+                    <input class="form-control" type="text" th:field="*{setsList[__${row.index}__].weight}" name="weight" placeholder="Enter weight..." />
                 </div>
                 <!--input type="submit" id="submit-form" value = "Finish Set" style = "visibility:hidden;" /-->
             </form>
