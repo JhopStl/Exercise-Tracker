@@ -51,8 +51,10 @@ public class SetController {
         //initialize the Sets list
         SetForm setForm = new SetForm();
         ArrayList<Sets> setsList = new ArrayList<Sets>();
-        //creates 6 empty Sets objects
-        for (int i=0; i<6; i++) {
+
+        //creates empty Sets objects
+        int count = setsList.size();
+        for (int i=0; i< count + 1; i++) {
             setsList.add(new Sets());
         }
         setForm.setSetsList(setsList);
@@ -65,7 +67,7 @@ public class SetController {
             //Create a new exercise from the ID that has pulled via URL (using @PathVariable to pull)
             Exercise exercise = exerciseDao.findOne(exId);
             model.addAttribute("title", "Add Set - " + exercise.getName());
-            //for each set, tie that to the new exercise that was created above
+            //for each set, tie that to the new ;exercise that was created above
             sets.setExercise(exercise);
             setDao.save(sets);
             model.addAttribute("Sets", setDao.findById(exId));
