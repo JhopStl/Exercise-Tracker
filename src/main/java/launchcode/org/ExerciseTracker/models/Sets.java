@@ -54,6 +54,8 @@ public class Sets {
         return exercise;
     }
 
+    //test
+
     public void setExercise(Exercise exercise) {
         this.exercise = exercise;
     }
