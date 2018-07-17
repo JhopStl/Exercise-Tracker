@@ -79,12 +79,6 @@ public class SetController {
         return "set/index";
     }
 
-    @RequestMapping(value="add/{exId}",
-            params = {"addContactPhone"}, method=RequestMethod.POST) //params specifies the method that spring will use
-    public String addRow(Sets sets) {
-
-    }
-
     //process and add new Set object
     //@RequestMapping(value="add/{exId}", method = RequestMethod.POST)
     //public String processSet(@ModelAttribute Sets newSet, Model model, @PathVariable int exId) {
