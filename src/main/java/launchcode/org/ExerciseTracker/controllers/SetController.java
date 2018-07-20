@@ -5,6 +5,7 @@ import launchcode.org.ExerciseTracker.models.Forms.SetForm;
 import launchcode.org.ExerciseTracker.models.Sets;
 import launchcode.org.ExerciseTracker.models.data.ExerciseDao;
 import launchcode.org.ExerciseTracker.models.data.SetDao;
+import launchcode.org.ExerciseTracker.utils.SetUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,7 +83,8 @@ public class SetController {
     @RequestMapping(value="add/{exId}", params = {"addSets"}, method=RequestMethod.POST) //params specifies the method that spring will use
     public String addRow(SetForm setForm) {
         Sets sets = new Sets ();
-        //database sets ID?
+        //database sets ID? instead, create random negative ID
+        sets.setId(SetUtils.randomNegativeId());
         //adding new set added to the list
         setForm.getSetsList().add(sets);
 
