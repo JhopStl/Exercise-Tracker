@@ -33,6 +33,9 @@ public class Sets {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getRep() {
         return rep;

@@ -34,6 +34,23 @@ public class SetController {
         return "set/index";
     }
 
+
+/*
+    @RequestMapping(value ="add/{exId}", method=RequestMethod.POST)
+    public String saveSetForm(@ModelAttribute("setForm") SetForm setForm, Model model, @PathVariable int exId){
+        for(Sets sets : setForm.getSetsList()) {
+            //Create a new exercise from the ID that has pulled via URL (using @PathVariable to pull)
+            Exercise exercise = exerciseDao.findOne(exId);
+            model.addAttribute("title", "Add Set - " + exercise.getName());
+            //for each set, tie that to the new ;exercise that was created above
+            sets.setExercise(exercise);
+            setDao.save(sets);
+            model.addAttribute("Sets", setDao.findById(exId));
+            model.addAttribute("exId", exId);
+        }
+        return "set/index";
+    }*/
+
     //handler to display add Set form
     //use @PathVariable to pull in exercise ID from URL
     @GetMapping(value="add/{exId}")
@@ -46,7 +63,7 @@ public class SetController {
         return "set/add";
 
     }
-    //defining SetListForm object.  Allows access to the setlistForm object in view
+    //defining SetListForm object.  Allows access to the setlistForm object in view. //populates sets List
     @ModelAttribute("setForm")
     public SetForm populateSets() {
         //initialize the Sets list
@@ -62,21 +79,14 @@ public class SetController {
         return setForm;
     }
 
+    @RequestMapping(value="add/{exId}", params = {"addSets"}, method=RequestMethod.POST) //params specifies the method that spring will use
+    public String addRow(SetForm setForm) {
+        Sets sets = new Sets ();
+        //database sets ID?
+        //adding new set added to the list
+        setForm.getSetsList().add(sets);
 
-
-    @RequestMapping(value ="add/{exId}", method=RequestMethod.POST)
-    public String saveSetForm(@ModelAttribute("setForm") SetForm setForm, Model model, @PathVariable int exId){
-        for(Sets sets : setForm.getSetsList()) {
-            //Create a new exercise from the ID that has pulled via URL (using @PathVariable to pull)
-            Exercise exercise = exerciseDao.findOne(exId);
-            model.addAttribute("title", "Add Set - " + exercise.getName());
-            //for each set, tie that to the new ;exercise that was created above
-            sets.setExercise(exercise);
-            setDao.save(sets);
-            model.addAttribute("Sets", setDao.findById(exId));
-            model.addAttribute("exId", exId);
-        }
-        return "set/index";
+        return "set/add";
     }
 
     //process and add new Set object
