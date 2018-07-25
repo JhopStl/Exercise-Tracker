@@ -26,7 +26,7 @@ public class SetsServiceImpl implements SetsService {
         return setDao.findByExercise_ExerciseId(exerciseId);
     }
 
-    public Sets findSetsById(Integer id) {
+    public Sets findSetsById(int id) {
         return setDao.findBySetsId(id);
     }
 

@@ -1,41 +1,44 @@
 package launchcode.org.ExerciseTracker.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import launchcode.org.ExerciseTracker.dto.SetsDTO;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Sets {
+public class Sets implements Serializable {
 
     @Id
     @GeneratedValue
-    private int id;
-
+    private Long setsId;
     private int rep;
     private double weight;
+
+    private static final long serialVersionUID = 445689846;
+
 
     @ManyToOne //many sets to one exercise
     private Exercise exercise;
 
     //constructor
-    public Sets (int rep, double weight) {
-        this.rep = rep;
-        this.weight = weight;
+    public Sets (SetsDTO setsDTO) {
+        this.rep = setsDTO.getRep();
+        this.weight = setsDTO.getWeight();
     }
 
     //default constructor
     public Sets () {}
 
+    //method to check if Sets is new (checks if ID value is null)
+    @Transient
+    public boolean isNew() {return (this.setsId == null);}
+
     //getters and setters
 
-    public int getId() {
-        return id;
-    }
+    public Long getSetsId() { return setsId; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setSetsId(Long setsId) { this.setsId = setsId; }
+
 
     public int getRep() {
         return rep;
@@ -45,6 +48,7 @@ public class Sets {
         this.rep = rep;
     }
 
+
     public double getWeight() {
         return weight;
     }
@@ -53,12 +57,11 @@ public class Sets {
         this.weight = weight;
     }
 
+
     public Exercise getExercise() {
         return exercise;
     }
-
-    //test
-
+    
     public void setExercise(Exercise exercise) {
         this.exercise = exercise;
     }
