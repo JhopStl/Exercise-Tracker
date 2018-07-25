@@ -1,6 +1,7 @@
 package launchcode.org.ExerciseTracker.models;
 
 import launchcode.org.ExerciseTracker.dto.SetsDTO;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,14 +11,24 @@ public class Sets implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name ="sets_id", nullable = false, insertable = true, updatable = true) //defining the column name and details
     private Long setsId;
+
+    @Basic
+    @Column(name="rep", nullable = false, insertable = true, updatable = true)
+    @NotEmpty
     private int rep;
+
+    @Basic
+    @Column(name="weight", nullable = false, insertable = true, updatable = true)
+    @NotEmpty
     private double weight;
 
     private static final long serialVersionUID = 445689846;
 
 
     @ManyToOne //many sets to one exercise
+    @JoinColumn(name = "exercise_id", referencedColumnName = "id", nullable = false, insertable = true, updatable = true)
     private Exercise exercise;
 
     //constructor
@@ -61,7 +72,7 @@ public class Sets implements Serializable {
     public Exercise getExercise() {
         return exercise;
     }
-    
+
     public void setExercise(Exercise exercise) {
         this.exercise = exercise;
     }

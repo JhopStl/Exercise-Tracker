@@ -9,8 +9,8 @@ import java.util.List;
 
 @Repository
 @Transactional
-public interface SetDao extends CrudRepository <Sets, Integer> {
-    Sets findById(int id);
-    Sets findBySetsId(Integer id);
-    List<Sets> findByExercise_ExerciseId(Integer id);
+public interface SetDao extends CrudRepository <Sets, Long> {
+    //Sets findById(Long setsId);
+    Sets findBySetsId(Long setsId);
+    List<Sets> findByExercise_ExerciseId(Long setsId);
 }
