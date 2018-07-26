@@ -31,14 +31,20 @@ public class Sets implements Serializable {
     @JoinColumn(name = "exercise_id", referencedColumnName = "id", nullable = false, insertable = true, updatable = true)
     private Exercise exercise;
 
+
+    //default constructor
+    public Sets () {}
+
     //constructor
     public Sets (SetsDTO setsDTO) {
         this.rep = setsDTO.getRep();
         this.weight = setsDTO.getWeight();
     }
 
-    //default constructor
-    public Sets () {}
+    public Sets (int rep, double weight) {
+        this.rep = rep;
+        this.weight = weight;
+    }
 
     //method to check if Sets is new (checks if ID value is null)
     @Transient

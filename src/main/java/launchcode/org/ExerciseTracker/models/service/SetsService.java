@@ -9,5 +9,5 @@ import java.util.List;
 public interface SetsService {
     List<Sets> findSetsByExerciseId(int exerciseId);
     Sets addSets(SetsDTO setsDTO);
-    Sets findSetsById(Integer id);
+    Sets findSetsById(Long setsId);
 }

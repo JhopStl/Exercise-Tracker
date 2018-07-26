@@ -26,13 +26,15 @@ public class SetsServiceImpl implements SetsService {
         return setDao.findByExercise_ExerciseId(exerciseId);
     }
 
-    public Sets findSetsById(int id) {
-        return setDao.findBySetsId(id);
+    public Sets findSetsById(Long setsId) {
+        return setDao.findBySetsId(setsId);
     }
 
+    @Override
+    @Transactional
     public Sets addSets(SetsDTO setsDTO) {
         Exercise exercise = exerciseDao.findOne(setsDTO.getExerciseId());
-        Sets sets = new Sets (setsDTO.getRep(), setsDTO.getWeight());
+        Sets sets = new Sets(setsDTO.getRep(), setsDTO.getWeight());
         return setDao.save(sets);
     }
 

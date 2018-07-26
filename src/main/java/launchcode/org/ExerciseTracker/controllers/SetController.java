@@ -84,7 +84,7 @@ public class SetController {
     public String addRow(SetForm setForm) {
         Sets sets = new Sets ();
         //database sets ID? instead, create random negative ID
-        sets.setId(SetUtils.randomNegativeId());
+        sets.setSetsId(SetUtils.randomNegativeId());
         //adding new set added to the list
         setForm.getSetsList().add(sets);
 

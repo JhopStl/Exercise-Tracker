@@ -5,9 +5,9 @@ import java.util.Random;
 public class SetUtils {
 
     //random negative ID
-    public static int randomNegativeId()
+    public static Long randomNegativeId()
     {
         Random rand = new Random();
-        return -1 * ((int)rand.nextInt(1000));
+        return -1 * ((long)rand.nextInt(1000));
     }
 }

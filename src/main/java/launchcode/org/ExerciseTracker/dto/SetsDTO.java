@@ -9,7 +9,6 @@ public class SetsDTO {
     private double weight;
 
 
-
     //empty constructor
     public SetsDTO(){}
 
@@ -18,11 +17,14 @@ public class SetsDTO {
         this.rep = rep;
         this.weight = weight;
     }
+
     //overloading method
     //other constructor? need to find out why we should have this
     public SetsDTO(Sets sets) {
         this.setsId = sets.getSetsId();
         this.exerciseId = sets.getExercise().getId();
+        this.rep = sets.getRep();
+        this.weight = sets.getWeight();
     }
 
 
@@ -31,7 +33,7 @@ public class SetsDTO {
         return setsId;
     }
 
-    public void setId(Long SetsId) {
+    public void setSetsId(Long setsId) {
         this.setsId = setsId;
     }
 
