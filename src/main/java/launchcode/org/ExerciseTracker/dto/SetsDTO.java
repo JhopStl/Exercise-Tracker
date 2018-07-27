@@ -19,10 +19,10 @@ public class SetsDTO {
     }
 
     //overloading method
-    //other constructor? need to find out why we should have this
+    //ties SetsDTO to the Sets model class
     public SetsDTO(Sets sets) {
         this.setsId = sets.getSetsId();
-        this.exerciseId = sets.getExercise().getId();
+        this.exerciseId = sets.getExercise().getExerciseId();
         this.rep = sets.getRep();
         this.weight = sets.getWeight();
     }

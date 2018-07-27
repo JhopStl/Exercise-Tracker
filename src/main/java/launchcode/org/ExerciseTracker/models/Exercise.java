@@ -1,16 +1,27 @@
 package launchcode.org.ExerciseTracker.models;
 
+import launchcode.org.ExerciseTracker.dto.ExerciseDTO;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Exercise {
+@Table(name= "exercise")
+public class Exercise implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "exercise_id")
     private Long exerciseId;
+
+    @Basic
+    @Column(name = "name", nullable = false, insertable = true, updatable = true)
+    @NotEmpty
     private String name;
+
 
     //for the wSession and Exercise relationship
     @ManyToOne //Many exercises to one session
@@ -21,21 +32,32 @@ public class Exercise {
     @JoinColumn (name="exercise_id") //if it's different from the exercise instance declared in "sets" then it will create separate fields
     private List<Sets> sets = new ArrayList<>();
 
+    private static final long serialVersionUID = 954844545;
+
+    //default constructor
+    public Exercise (){}
+
+    //constructor
+    public Exercise (ExerciseDTO exerciseDTO) {
+        this.name = exerciseDTO.getName();
+    }
 
     //constructor
     public Exercise (String name) {
         this.name = name;
     }
 
-    //default constructor
-    public Exercise (){}
-
+    //method to check if is Exercise is new (checks if ID value is null)
+    @Transient
+    public boolean isNew() {return (this.exerciseId == null);}
 
     //getters and setters
 
-    public Long getId() {
+    public Long getExerciseId() {
         return exerciseId;
     }
+
+    public void setExerciseId(Long exerciseId) {this.exerciseId = exerciseId;}
 
     public String getName() {
         return name;
@@ -59,5 +81,12 @@ public class Exercise {
 
     public void setSets(List<Sets> sets) {
         this.sets = sets;
+    }
+
+    //comment on what this does
+    //adds a set to the List of sets
+    public void addSets(Sets sets) {
+        sets.setExercise(this);
+        getSets().add(sets);
     }
 }

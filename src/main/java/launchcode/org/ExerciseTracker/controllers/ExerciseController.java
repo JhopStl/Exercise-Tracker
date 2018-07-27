@@ -53,7 +53,7 @@ public class ExerciseController {
         exerciseDao.save(newExercise);
 
         //grab exercise Id and add to the redirect
-        Long exId = newExercise.getId();
+        Long exId = newExercise.getExerciseId();
         return "redirect:/set/add/" + exId;
     }
 

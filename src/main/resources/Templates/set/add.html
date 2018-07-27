@@ -55,9 +55,9 @@
                 <tr th:each="sets, rowStat : *{setsList}">
                     <td></td>
                     <td><input type="text" class="form-control"
-                               th:field="*{setsList[__${rowStat.index}__].rep}"/></td>
+                               th:field="*{setsList[__${rowStat.index}__].weight}"/></td>
                     <td><input type="text" class="form-control input-button-right"
-                               th:field="*{setsList[__${rowStat.index}__].weight}"/>
+                               th:field="*{setsList[__${rowStat.index}__].rep}"/>
                         <span class="col-sm-1 row-delete-button">
                                <button type="submit" class="btn btn-default"
                                        th:value="*{setsList[__${rowStat.index}__].setsId}"
