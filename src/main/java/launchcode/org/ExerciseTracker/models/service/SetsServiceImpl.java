@@ -22,7 +22,7 @@ public class SetsServiceImpl implements SetsService {
     @Autowired
     private ExerciseDao exerciseDao;
 
-    public List<Sets> findSetsByExerciseId(int exerciseId){
+    public List<Sets> findSetsByExerciseId(Long exerciseId){
         return setDao.findByExercise_ExerciseId(exerciseId);
     }
 

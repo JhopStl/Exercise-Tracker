@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 @Transactional
-public interface ExerciseDao extends CrudRepository<Exercise, Integer> {
+public interface ExerciseDao extends CrudRepository<Exercise, Long> {
 }

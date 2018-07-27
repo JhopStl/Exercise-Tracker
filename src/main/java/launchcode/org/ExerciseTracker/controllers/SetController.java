@@ -55,7 +55,7 @@ public class SetController {
     //handler to display add Set form
     //use @PathVariable to pull in exercise ID from URL
     @GetMapping(value="add/{exId}")
-    public String addSet(Model model, @PathVariable int exId) {
+    public String addSet(Model model, @PathVariable Long exId) {
 
         //Exercise exercise = exerciseDao.findOne(exId);
         model.addAttribute("title", "Add Set");

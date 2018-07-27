@@ -4,7 +4,7 @@ import launchcode.org.ExerciseTracker.models.Sets;
 
 public class SetsDTO {
     private Long setsId;
-    private int exerciseId;
+    private Long exerciseId;
     private int rep;
     private double weight;
 
@@ -37,11 +37,11 @@ public class SetsDTO {
         this.setsId = setsId;
     }
 
-    public int getExerciseId() {
+    public Long getExerciseId() {
         return exerciseId;
     }
 
-    public void setExerciseId(int exerciseId) {
+    public void setExerciseId(Long exerciseId) {
         this.exerciseId = exerciseId;
     }
 

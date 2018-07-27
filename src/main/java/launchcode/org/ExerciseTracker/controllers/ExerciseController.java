@@ -53,14 +53,14 @@ public class ExerciseController {
         exerciseDao.save(newExercise);
 
         //grab exercise Id and add to the redirect
-        int exId = newExercise.getId();
+        Long exId = newExercise.getId();
         return "redirect:/set/add/" + exId;
     }
 
     //views session page (when user clicks on session URL, they are directed to new page)
     //portal to view details about exercise
     @RequestMapping(value="view/{exId}", method = RequestMethod.GET)
-    public String viewExercise(Model model, @PathVariable int exId) {
+    public String viewExercise(Model model, @PathVariable Long exId) {
 
         // pull a session ID by making an instance of the exercise class and calling DAO
         Exercise exercise = exerciseDao.findOne(exId);

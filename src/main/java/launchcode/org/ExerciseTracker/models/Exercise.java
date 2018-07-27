@@ -9,7 +9,7 @@ public class Exercise {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long exerciseId;
     private String name;
 
     //for the wSession and Exercise relationship
@@ -33,8 +33,8 @@ public class Exercise {
 
     //getters and setters
 
-    public int getId() {
-        return id;
+    public Long getId() {
+        return exerciseId;
     }
 
     public String getName() {

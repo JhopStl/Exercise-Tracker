@@ -12,5 +12,5 @@ import java.util.List;
 public interface SetDao extends CrudRepository <Sets, Long> {
     //Sets findById(Long setsId);
     Sets findBySetsId(Long setsId);
-    List<Sets> findByExercise_ExerciseId(int id);
+    List<Sets> findByExercise_ExerciseId(Long id);
 }
