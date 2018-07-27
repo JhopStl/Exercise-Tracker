@@ -18,7 +18,7 @@
                 </thead>
 
                 <tr th:each="exercise: ${exercises}">
-                    <td><a th:href="'exercise/view/' + ${exercise.id}" th:text="${exercise.name}"></a></td>
+                    <td><a th:href="'exercise/view/' + ${exercise.exerciseId}" th:text="${exercise.name}"></a></td>
                 </tr>
             </table>
 
