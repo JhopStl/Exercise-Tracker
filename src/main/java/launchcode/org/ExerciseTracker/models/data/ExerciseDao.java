@@ -1,5 +1,7 @@
 package launchcode.org.ExerciseTracker.models.data;
 
+import launchcode.org.ExerciseTracker.ExerciseTrackerApplication;
+import launchcode.org.ExerciseTracker.dto.ExerciseDTO;
 import launchcode.org.ExerciseTracker.models.Exercise;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -10,4 +12,7 @@ import java.util.List;
 @Repository
 @Transactional
 public interface ExerciseDao extends CrudRepository<Exercise, Long> {
+    List<Exercise> findByName (String name);
+    List<Exercise> findExerciseById (Long exerciseID);
+
 }

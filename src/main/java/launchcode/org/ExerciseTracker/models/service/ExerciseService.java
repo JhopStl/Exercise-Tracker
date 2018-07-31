@@ -12,7 +12,7 @@ public interface ExerciseService {
     List<Exercise> findByName(String name);
     List<Exercise> findExerciseById(Long exerciseId);
 
-    List<Sets> findSetsByExeciseId(Long exerciseId);
+    List<Sets> findSetsByExerciseId(Long exerciseId);
     Sets addSets(SetsDTO setsDTO);
     Sets findSetsById(Long setsId);
 
