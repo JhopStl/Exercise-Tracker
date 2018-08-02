@@ -13,6 +13,6 @@ import java.util.List;
 @Transactional
 public interface ExerciseDao extends CrudRepository<Exercise, Long> {
     List<Exercise> findByName (String name);
-    List<Exercise> findExerciseById (Long exerciseID);
+    //List<Exercise> findExerciseById (Long exerciseID);
 
 }

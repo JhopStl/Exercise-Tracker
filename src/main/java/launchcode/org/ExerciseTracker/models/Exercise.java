@@ -14,7 +14,7 @@ public class Exercise implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "exercise_id")
+    @Column(name = "exerciseId")
     private Long exerciseId;
 
     @Basic
@@ -29,8 +29,8 @@ public class Exercise implements Serializable {
 
     //for the Sets and Exercise relationship
     @OneToMany //One exercise to many sets
-    @JoinColumn (name="exercise_id") //if it's different from the exercise instance declared in "sets" then it will create separate fields
-    private List<Sets> sets = new ArrayList<>();
+    @JoinColumn (name="exerciseId") //if it's different from the exercise instance declared in "sets" then it will create separate fields
+    private List<Sets> setsList = new ArrayList<>();
 
     private static final long serialVersionUID = 954844545;
 
@@ -75,18 +75,17 @@ public class Exercise implements Serializable {
             this.sesh = sesh;
     }
 
-    public List<Sets> getSets() {
-        return sets;
+    public List<Sets> getSetsList() {
+        return setsList;
     }
 
-    public void setSets(List<Sets> sets) {
-        this.sets = sets;
+    public void setSetsList(List<Sets> setsList) {
+        this.setsList = setsList;
     }
 
-    //comment on what this does
     //adds a set to the List of sets
     public void addSets(Sets sets) {
         sets.setExercise(this);
-        getSets().add(sets);
+        getSetsList().add(sets);
     }
 }

@@ -45,7 +45,7 @@
             <br>
             <button id = "add-set">Add Set</button>
             <button form="set-form">Finish</button-->
-            <form th:object="${setForm}" method = "POST" id="set-form">
+            <form th:object="${sets}" method = "POST" id="set-form">
             <table class="table table-striped">
                 <tr>
                     <th class="col-sm-1"></th>
@@ -54,7 +54,7 @@
                 </tr>
                 <tr th:each="sets, rowStat : *{setsList}">
                     <td></td>
-                    <td><input type="text" class="form-control"
+                    <td><input type="number" class="form-control"
                                th:field="*{setsList[__${rowStat.index}__].weight}"/></td>
                     <td><input type="text" class="form-control input-button-right"
                                th:field="*{setsList[__${rowStat.index}__].rep}"/>
@@ -78,7 +78,7 @@
                 </div>
 
 
-
+            </form>
         </div>
         <div class="col">
         </div>

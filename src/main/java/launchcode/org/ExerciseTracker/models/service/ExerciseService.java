@@ -10,10 +10,10 @@ public interface ExerciseService {
 
     //List<Exercise> findAll();
     List<Exercise> findByName(String name);
-    List<Exercise> findExerciseById(Long exerciseId);
+    //List<Exercise> findExerciseById(Long exerciseId);
 
     List<Sets> findSetsByExerciseId(Long exerciseId);
-    Sets addSets(SetsDTO setsDTO);
+    Sets addSetsList(SetsDTO setsDTO);
     Sets findSetsById(Long setsId);
 
 }

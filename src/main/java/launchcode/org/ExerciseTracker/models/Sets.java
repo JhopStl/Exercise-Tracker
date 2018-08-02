@@ -28,7 +28,7 @@ public class Sets implements Serializable {
 
 
     @ManyToOne //many sets to one exercise
-    @JoinColumn(name = "exercise_id", referencedColumnName = "exerciseId", nullable = false, insertable = true, updatable = true)
+    @JoinColumn(name = "exerciseId", referencedColumnName = "exerciseId", nullable = false, insertable = true, updatable = true)
     private Exercise exercise;
 
 

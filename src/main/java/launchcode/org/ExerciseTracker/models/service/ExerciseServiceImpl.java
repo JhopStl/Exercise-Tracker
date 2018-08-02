@@ -33,10 +33,10 @@ public class ExerciseServiceImpl implements ExerciseService {
         return exerciseDao.findByName(name);
     }
 
-    @Transactional
-    public List<Exercise> findExerciseById(Long exerciseId) {
-        return exerciseDao.findExerciseById(exerciseId);
-    }
+    //@Transactional
+    //public List<Exercise> findExerciseById(Long exerciseId) {
+        //return exerciseDao.findExerciseById(exerciseId);
+    //}
 
     @Transactional
     public List<Sets> findSetsByExerciseId(Long exerciseId) {
@@ -44,7 +44,7 @@ public class ExerciseServiceImpl implements ExerciseService {
     }
 
     @Transactional
-    public Sets addSets(SetsDTO setsDTO) {
+    public Sets addSetsList(SetsDTO setsDTO) {
         Exercise exercise = exerciseDao.findOne(setsDTO.getExerciseId());
         Sets sets = new Sets (setsDTO.getRep(), setsDTO.getWeight());
 

@@ -7,7 +7,7 @@ import java.util.List;
 public class ExerciseDTO {
     private Long exerciseID;
     private String name;
-    private List<SetsDTO> sets;
+    private List<SetsDTO> setsList;
 
     //Empty constructor
     public ExerciseDTO() {}
@@ -32,12 +32,12 @@ public class ExerciseDTO {
         this.exerciseID = exerciseID;
     }
 
-    public List<SetsDTO> getSets() {
-        return sets;
+    public List<SetsDTO> getSetsList() {
+        return setsList;
     }
 
-    public void setSets(List<SetsDTO> sets) {
-        this.sets = sets;
+    public void setSetsList(List<SetsDTO> sets) {
+        this.setsList = sets;
     }
 
     public String getName() {

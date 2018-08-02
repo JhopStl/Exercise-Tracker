@@ -65,28 +65,29 @@ public class SetController {
 
     }
     //defining SetListForm object.  Allows access to the setlistForm object in view. //populates sets List
-    @ModelAttribute("setForm")
-    public SetForm populateSets() {
+    //@ModelAttribute("setForm")
+   // public SetForm populateSets() {
         //initialize the Sets list
-        SetForm setForm = new SetForm();
-        ArrayList<Sets> setsList = new ArrayList<Sets>();
+        //SetForm setForm = new SetForm();
+        //ArrayList<Sets> setsList = new ArrayList<Sets>();
 
         //creates empty Sets objects
-        int count = setsList.size();
-        for (int i=0; i< count + 1; i++) {
-            setsList.add(new Sets());
-        }
-        setForm.setSetsList(setsList);
-        return setForm;
-    }
+        //int count = setsList.size();
+        //for (int i=0; i< count + 1; i++) {
+            //setsList.add(new Sets());
+        //}
+        //setForm.setSetsList(setsList);
+        //return setForm;
+    //}
 
     @RequestMapping(value="add/{exId}", params = {"addSets"}, method=RequestMethod.POST) //params specifies the method that spring will use
-    public String addRow(SetForm setForm) {
+    public String addRow(final Exercise exercise) {
         Sets sets = new Sets ();
         //database sets ID? instead, create random negative ID
         sets.setSetsId(SetUtils.randomNegativeId());
         //adding new set added to the list
-        setForm.getSetsList().add(sets);
+        exercise.getSetsList().add(sets);
+        //setForm.getSetsList().add(sets);
 
         return "set/add";
     }
