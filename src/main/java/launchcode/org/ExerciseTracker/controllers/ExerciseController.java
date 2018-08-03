@@ -12,8 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
-@RequestMapping(value = "exercise/")
+@RequestMapping(value = "{seshId}/exercise/")
 public class ExerciseController {
 
     @Autowired
@@ -35,7 +38,7 @@ public class ExerciseController {
 
     //handler to display add exercise form
     //use @PathVariable to pull in session ID from URL
-    @GetMapping("add/{seshId}")
+    @GetMapping("add")
     public String addExercise(Model model, @PathVariable int seshId) {
 
         wSession wsessionId = seshDao.findOne(seshId);
@@ -48,10 +51,11 @@ public class ExerciseController {
     }
 
     //process add Exercise form
-    @RequestMapping(value = "add/{seshId}", method = RequestMethod.POST)
+    @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processExercise(@ModelAttribute Exercise newExercise, Model model, @PathVariable int seshId) {
 
         model.addAttribute("title", "Add Exercise");
+        model.addAttribute("titleAlt", "Yay");
         //exerciseDao.save(newExercise);
 
         wSession sesh = seshDao.findOne(seshId);
@@ -60,7 +64,8 @@ public class ExerciseController {
 
         //grab exercise Id and add to the redirect
         Long exId = newExercise.getExerciseId();
-        return "redirect:/set/add/" + exId;
+        //return "redirect:/set/add/" + exId;
+        return "exercise/view";
     }
 
     //views session page (when user clicks on session URL, they are directed to new page)
@@ -78,25 +83,25 @@ public class ExerciseController {
     //Set handlers
 
     //list sets handler
-    @RequestMapping(value="")
-    public String setsIndex(Model model) {
-        model.addAttribute("Sets", setDao.findAll());
-        model.addAttribute("title", "Sets");
-        return "set/index";
-    }
+    //@RequestMapping(value="")
+   // public String setsIndex(Model model) {
+        //model.addAttribute("Sets", setDao.findAll());
+        //model.addAttribute("title", "Sets");
+        //return "exercise/view";
+    //}
 
-    @GetMapping(value="add/{exId}")
+    @GetMapping(value="/{exId}/new")
     public String addSet(Model model, @PathVariable Long exId) {
 
         //Exercise exercise = exerciseDao.findOne(exId);
         model.addAttribute("title", "Add Set");
         model.addAttribute(new Sets());
         model.addAttribute("sets", exerciseDao.findOne(exId));
-        return "set/add";
+        return "exercise/exerciseForm";
 
     }
 
-    @RequestMapping(value="add/{exId}", params = {"addSets"}, method=RequestMethod.POST) //params specifies the method that spring will use
+    @RequestMapping(value="{exId}/new", params = {"addSets"}, method=RequestMethod.POST) //params specifies the method that spring will use
     public String addRow(final Exercise exercise) {
         Sets sets = new Sets ();
         //database sets ID? instead, create random negative ID
@@ -105,7 +110,7 @@ public class ExerciseController {
         exercise.getSetsList().add(sets);
         //setForm.getSetsList().add(sets);
 
-        return "set/add";
+        return "exercise/exerciseForm";
     }
 
 
