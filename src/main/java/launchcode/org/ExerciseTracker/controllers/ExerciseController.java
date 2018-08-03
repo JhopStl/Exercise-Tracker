@@ -1,9 +1,12 @@
 package launchcode.org.ExerciseTracker.controllers;
 
 import launchcode.org.ExerciseTracker.models.Exercise;
+import launchcode.org.ExerciseTracker.models.Sets;
 import launchcode.org.ExerciseTracker.models.data.ExerciseDao;
+import launchcode.org.ExerciseTracker.models.data.SetDao;
 import launchcode.org.ExerciseTracker.models.data.wSessionDao;
 import launchcode.org.ExerciseTracker.models.wSession;
+import launchcode.org.ExerciseTracker.utils.SetUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +22,12 @@ public class ExerciseController {
     @Autowired
     private wSessionDao seshDao;
 
+    @Autowired
+    private SetDao setDao;
+
     //view Exercises...if this is needed/wanted
     @RequestMapping(value = "")
-    public String index(Model model) {
+    public String exerciseIndex(Model model) {
         model.addAttribute("title", "Exercise");
         model.addAttribute("exercises", exerciseDao.findAll());
         return "exercise/index";
@@ -38,7 +44,7 @@ public class ExerciseController {
         //no matter, what will pull a list of the most recently added session ID
         model.addAttribute("sessions", seshDao.findAllByOrderByIdDesc());
         //return exercise/add view
-        return "exercise/add";
+        return "exercise/exerciseForm";
     }
 
     //process add Exercise form
@@ -67,6 +73,39 @@ public class ExerciseController {
         model.addAttribute("title", exercise.getName());
 
         return "exercise/view";
+    }
+
+    //Set handlers
+
+    //list sets handler
+    @RequestMapping(value="")
+    public String setsIndex(Model model) {
+        model.addAttribute("Sets", setDao.findAll());
+        model.addAttribute("title", "Sets");
+        return "set/index";
+    }
+
+    @GetMapping(value="add/{exId}")
+    public String addSet(Model model, @PathVariable Long exId) {
+
+        //Exercise exercise = exerciseDao.findOne(exId);
+        model.addAttribute("title", "Add Set");
+        model.addAttribute(new Sets());
+        model.addAttribute("sets", exerciseDao.findOne(exId));
+        return "set/add";
+
+    }
+
+    @RequestMapping(value="add/{exId}", params = {"addSets"}, method=RequestMethod.POST) //params specifies the method that spring will use
+    public String addRow(final Exercise exercise) {
+        Sets sets = new Sets ();
+        //database sets ID? instead, create random negative ID
+        sets.setSetsId(SetUtils.randomNegativeId());
+        //adding new set added to the list
+        exercise.getSetsList().add(sets);
+        //setForm.getSetsList().add(sets);
+
+        return "set/add";
     }
 
 

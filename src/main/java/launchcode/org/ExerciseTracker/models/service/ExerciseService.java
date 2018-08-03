@@ -13,7 +13,7 @@ public interface ExerciseService {
     //List<Exercise> findExerciseById(Long exerciseId);
 
     List<Sets> findSetsByExerciseId(Long exerciseId);
-    Sets addSetsList(SetsDTO setsDTO);
+    Sets addSets(SetsDTO setsDTO);
     Sets findSetsById(Long setsId);
 
 }

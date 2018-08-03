@@ -44,7 +44,7 @@ public class ExerciseServiceImpl implements ExerciseService {
     }
 
     @Transactional
-    public Sets addSetsList(SetsDTO setsDTO) {
+    public Sets addSets(SetsDTO setsDTO) {
         Exercise exercise = exerciseDao.findOne(setsDTO.getExerciseId());
         Sets sets = new Sets (setsDTO.getRep(), setsDTO.getWeight());
 
