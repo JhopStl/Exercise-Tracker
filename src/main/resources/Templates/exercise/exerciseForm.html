@@ -29,20 +29,22 @@
                         <th class="col-sm-1">Weight</th>
                         <th class="col-sm-1">Reps</th>
                     </tr>
-                    <tr th:each="sets, rowStat : *{setsList}">
+                    <tr th:each="set, rowStat : *{setsList}">
                         <td></td>
                         <td><input type="number" class="form-control"
                                    th:field="*{setsList[__${rowStat.index}__].weight}"/></td>
                         <td><input type="text" class="form-control input-button-right"
                                    th:field="*{setsList[__${rowStat.index}__].rep}"/>
-                            <span class="col-sm-1 row-delete-button">
+                            <!--span class="col-sm-1 row-delete-button">
                                <button type="submit" class="btn btn-default"
                                        th:value="*{setsList[__${rowStat.index}__].setsId}"
                                        name="removeSets">
                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
                                </button>
-                            </span>
+                            </span-->
                         </td>
+                        <td>asflkasdflk</td>
+                        <td><input type="text" class="form-control" th:field="*{rep}"/>
                     </tr>
                 </table>
 
