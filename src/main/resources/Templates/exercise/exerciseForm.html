@@ -29,6 +29,20 @@
                         <th class="col-sm-1">Weight</th>
                         <th class="col-sm-1">Reps</th>
                     </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type = "number" class="form-control" name = "setsList.weight" /></td>
+                        <td><input type = "text" class="form-control input-button-right" name = "setsList.rep" /></td>
+                    </tr>
+                    </tr>
+                </table>
+
+                <table class="table table-striped">
+                    <tr>
+                        <th class="col-sm-1"></th>
+                        <th class="col-sm-1">Weight</th>
+                        <th class="col-sm-1">Reps</th>
+                    </tr>
                     <tr th:each="set, rowStat : *{setsList}">
                         <td></td>
                         <td><input type="number" class="form-control"
