@@ -82,4 +82,22 @@ public class Sets implements Serializable {
     public void setExercise(Exercise exercise) {
         this.exercise = exercise;
     }
+
+    //pull in exercise
+    public static Builder getBuilder(Exercise exercise, int rep, double weight) {
+        return new Builder(exercise, rep, weight);
+    }
+
+    public static class Builder {
+        private Sets built;
+
+        public Builder(Exercise exercise, int rep, double weight) {
+            built = new Sets();
+            built.exercise = exercise;
+            built.rep = rep;
+            built.weight = weight;
+        }
+
+        public Sets build() {return built;}
+    }
 }

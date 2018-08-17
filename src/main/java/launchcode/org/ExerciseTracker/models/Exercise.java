@@ -88,4 +88,16 @@ public class Exercise implements Serializable {
         sets.setExercise(this);
         getSetsList().add(sets);
     }
+
+    public static class Builder {
+
+        private Exercise built;
+
+        public Builder(String name) {
+            built = new Exercise();
+            built.name = name;
+        }
+
+        public Exercise build() {return built;}
+    }
 }
