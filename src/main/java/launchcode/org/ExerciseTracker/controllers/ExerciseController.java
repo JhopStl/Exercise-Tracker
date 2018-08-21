@@ -104,7 +104,7 @@ public class ExerciseController {
     @RequestMapping(value="{exId}/new", params = {"addSets"}, method=RequestMethod.POST) //params specifies the method that spring will use
     public String addRow(final Exercise exercise) {
         Sets sets = Sets.
-                getBuilder(exercise, reps: null, weight).build();
+                getBuilder(exercise, 0, 0).build();
         //database sets ID? instead, create random negative ID for sets in list.  This allows for blank row
         sets.setSetsId(SetUtils.randomNegativeId());
         //adding new set added to the list
