@@ -5,6 +5,7 @@ import launchcode.org.ExerciseTracker.models.Sets;
 import launchcode.org.ExerciseTracker.models.data.ExerciseDao;
 import launchcode.org.ExerciseTracker.models.data.SetDao;
 import launchcode.org.ExerciseTracker.models.data.wSessionDao;
+import launchcode.org.ExerciseTracker.models.service.ExerciseService;
 import launchcode.org.ExerciseTracker.models.wSession;
 import launchcode.org.ExerciseTracker.utils.SetUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 @Controller
 @RequestMapping(value = "{seshId}/exercise/")
@@ -27,6 +29,9 @@ public class ExerciseController {
 
     @Autowired
     private SetDao setDao;
+
+    @Autowired
+    private ExerciseService exerciseService;
 
     //view Exercises...if this is needed/wanted
     @RequestMapping(value = "")
@@ -104,13 +109,19 @@ public class ExerciseController {
     @RequestMapping(value="{exId}/new", params = {"addSets"}, method=RequestMethod.POST) //params specifies the method that spring will use
     public String addRow(final Exercise exercise) {
         Sets sets = Sets.
-                getBuilder(exercise, 0, 0).build();
+                getBuilder(exercise, 12, 10).build();
         //database sets ID? instead, create random negative ID for sets in list.  This allows for blank row
         sets.setSetsId(SetUtils.randomNegativeId());
         //adding new set added to the list
         exercise.getSetsList().add(sets);
 
         return "exercise/exerciseForm";
+    }
+
+   @RequestMapping(value="{exId}")
+   @ResponseBody
+    public Exercise showExercise (@PathVariable Long exId) {
+        return exerciseService.findById(exId);
     }
 
 

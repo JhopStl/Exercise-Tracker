@@ -15,5 +15,6 @@ public interface ExerciseService {
     List<Sets> findSetsByExerciseId(Long exerciseId);
     Sets addSets(SetsDTO setsDTO);
     Sets findSetsById(Long setsId);
+    Exercise findById(Long exId);
 
 }

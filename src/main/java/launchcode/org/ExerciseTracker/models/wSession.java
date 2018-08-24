@@ -1,4 +1,5 @@
 package launchcode.org.ExerciseTracker.models;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class wSession {
     //for the wSession and exercise relationship
     @OneToMany//one wSession for many exercises
     @JoinColumn(name="sesh_id")
+    @JsonManagedReference
     private List<Exercise> exercises = new ArrayList<>();
 
     //for the wSession and user relationship

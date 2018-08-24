@@ -15,13 +15,11 @@ public class Sets implements Serializable {
     private Long setsId;
 
     @Basic
-    @Column(name="rep", nullable = false, insertable = true, updatable = true)
-    @NotEmpty
+    @Column(name="rep", insertable = true, updatable = true)
     private int rep;
 
     @Basic
-    @Column(name="weight", nullable = false, insertable = true, updatable = true)
-    @NotEmpty
+    @Column(name="weight", insertable = true, updatable = true)
     private double weight;
 
     private static final long serialVersionUID = 445689846;

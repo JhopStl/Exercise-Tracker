@@ -1,5 +1,6 @@
 package launchcode.org.ExerciseTracker.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import launchcode.org.ExerciseTracker.dto.ExerciseDTO;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -25,6 +26,7 @@ public class Exercise implements Serializable {
 
     //for the wSession and Exercise relationship
     @ManyToOne //Many exercises to one session
+    @JsonBackReference
     private wSession sesh;
 
     //for the Sets and Exercise relationship

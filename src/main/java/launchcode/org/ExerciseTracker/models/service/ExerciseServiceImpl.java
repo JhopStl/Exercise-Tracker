@@ -56,4 +56,7 @@ public class ExerciseServiceImpl implements ExerciseService {
         return setDao.findBySetsId(setsId);
     }
 
+    @Transactional
+    public Exercise findById (Long exId) {return exerciseDao.findOne(exId);}
+
 }
