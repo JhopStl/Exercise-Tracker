@@ -5,15 +5,15 @@ import launchcode.org.ExerciseTracker.models.Sets;
 public class SetsDTO {
     private Long setsId;
     private Long exerciseId;
-    private int rep;
-    private double weight;
+    private Integer rep;
+    private Integer weight;
 
 
     //empty constructor
     public SetsDTO(){}
 
     //constructor
-    public SetsDTO(int rep, double weight) {
+    public SetsDTO(Integer rep, Integer weight) {
         this.rep = rep;
         this.weight = weight;
     }
@@ -49,15 +49,15 @@ public class SetsDTO {
         return rep;
     }
 
-    public void setRep(int rep) {
+    public void setRep(Integer rep) {
         this.rep = rep;
     }
 
-    public double getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 }

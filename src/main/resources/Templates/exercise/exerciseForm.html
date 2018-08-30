@@ -23,20 +23,22 @@
                     </tr>
                 </table>
 
+
+                <!--add initial set object here??-->
                 <table class="table table-striped">
                     <tr>
-                        <th class="col-sm-2"></th>
                         <th class="col-sm-2">Reps</th>
                         <th class="col-sm-2">Weight</th>
+                        <th class="col-sm-2"></th>
                     </tr>
                     <tr>
+                        <td><input type = "text" style="width:100px;" class="form-control" name = "exercise.setsList.rep" /></td>
+                        <td><input type = "number" style="width:100px;" class="form-control"  name = "exercise.setsList.weight" /></td>
                         <td></td>
-                        <td><input type = "text" class="form-control" name = "setsList.rep" /></td>
-                        <td><input type = "number" class="form-control"  name = "setsList.weight" /></td>
-                    </tr>
                     </tr>
                 </table>
 
+                <!--th:if="${!exercise['new']}"-->
                 <!--table class="table table-striped">
                     <tr>
                         <th class="col-sm-2"></th>
@@ -49,13 +51,14 @@
                                    th:field="*{setsList[__${rowStat.index}__].rep}"/></td>
                         <td><input type="number" class="form-control input-button-right"
                                    th:field="*{setsList[__${rowStat.index}__].weight}"/>
-                            <!--span class="col-sm-1 row-delete-button">
+                            <span class="col-sm-1 row-delete-button">
                                <button type="submit" class="btn btn-default"
                                        th:value="*{setsList[__${rowStat.index}__].setsId}"
                                        name="removeSets">
                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
                                </button>
-                            </span-->
+                            </span>
+                            </table>
                         <!--/td>
                         <td>asflkasdflk</td>
                         <td><input type="text" class="form-control" th:field="*{rep}"/>
@@ -64,8 +67,7 @@
 
                 <div class="col-lg-12 button-col-align-right">
                     <input type="submit" class="btn btn-primary"/>
-                    <input th:type="submit" class="btn btn-success"
-                           name="addSets" value="Add Set"/>
+                    <input th:type="submit" class="btn btn-success" name="addSets" value="Add Set"/> <!--th:if="${!exercise['new']}"-->
                     <input type="button" th:onclick="'window.location.href=\'' + @{|/sets/|} + '\''"
                            class="btn btn-success" value="Cancel"/>
                 </div>

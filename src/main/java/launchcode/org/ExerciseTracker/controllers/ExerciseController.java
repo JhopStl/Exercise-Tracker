@@ -1,5 +1,6 @@
 package launchcode.org.ExerciseTracker.controllers;
 
+import launchcode.org.ExerciseTracker.dto.ExerciseDTO;
 import launchcode.org.ExerciseTracker.models.Exercise;
 import launchcode.org.ExerciseTracker.models.Sets;
 import launchcode.org.ExerciseTracker.models.data.ExerciseDao;
@@ -7,6 +8,7 @@ import launchcode.org.ExerciseTracker.models.data.SetDao;
 import launchcode.org.ExerciseTracker.models.data.wSessionDao;
 import launchcode.org.ExerciseTracker.models.service.ExerciseService;
 import launchcode.org.ExerciseTracker.models.wSession;
+import launchcode.org.ExerciseTracker.utils.ExerciseUtils;
 import launchcode.org.ExerciseTracker.utils.SetUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,27 +50,31 @@ public class ExerciseController {
 
         wSession wsessionId = seshDao.findOne(seshId);
         model.addAttribute("title", "Add Exercise");
-        model.addAttribute(new Exercise());
+        Exercise exercise = new Exercise();
+        model.addAttribute(exercise);
+
         //no matter, what will pull a list of the most recently added session ID
         model.addAttribute("sessions", seshDao.findAllByOrderByIdDesc());
-        //return exercise/add view
+
         return "exercise/exerciseForm";
     }
 
     //process add Exercise form
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processExercise(@ModelAttribute Exercise newExercise, Model model, @PathVariable int seshId) {
+    public String processExercise(@ModelAttribute Exercise exercise, Model model, @PathVariable int seshId) {
 
         model.addAttribute("title", "Add Exercise");
         model.addAttribute("titleAlt", "Yay");
         //exerciseDao.save(newExercise);
 
         wSession sesh = seshDao.findOne(seshId);
-        newExercise.setwSession(sesh);
-        exerciseDao.save(newExercise);
+        exercise.setwSession(sesh);
+        //exerciseDao.save(exercise);
+
+        ExerciseDTO exerciseDTO = ExerciseUtils.exerciseToExerciseDTO(exercise);
 
         //grab exercise Id and add to the redirect
-        Long exId = newExercise.getExerciseId();
+        Long exId = exercise.getExerciseId();
         //return "redirect:/set/add/" + exId;
         return "exercise/view";
     }
@@ -95,7 +101,7 @@ public class ExerciseController {
         //return "exercise/view";
     //}
 
-    @GetMapping(value="/{exId}/new")
+    @GetMapping(value="{exId}/new")
     public String addSet(Model model, @PathVariable Long exId) {
 
         //Exercise exercise = exerciseDao.findOne(exId);
@@ -109,20 +115,20 @@ public class ExerciseController {
     @RequestMapping(value="{exId}/new", params = {"addSets"}, method=RequestMethod.POST) //params specifies the method that spring will use
     public String addRow(final Exercise exercise) {
         Sets sets = Sets.
-                getBuilder(exercise, 12, 10).build();
+                getBuilder(exercise, null, null).build();
         //database sets ID? instead, create random negative ID for sets in list.  This allows for blank row
-        sets.setSetsId(SetUtils.randomNegativeId());
+        sets.setSetsId(ExerciseUtils.randomNegativeId());
         //adding new set added to the list
         exercise.getSetsList().add(sets);
 
         return "exercise/exerciseForm";
     }
 
-   @RequestMapping(value="{exId}")
-   @ResponseBody
-    public Exercise showExercise (@PathVariable Long exId) {
-        return exerciseService.findById(exId);
-    }
+   //@RequestMapping(value="{exId}")
+   //@ResponseBody
+   // public Exercise showExercise (@PathVariable Long exId) {
+        //return exerciseService.findById(exId);
+    //}
 
 
 

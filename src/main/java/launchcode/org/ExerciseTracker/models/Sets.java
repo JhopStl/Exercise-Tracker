@@ -2,6 +2,7 @@ package launchcode.org.ExerciseTracker.models;
 
 import launchcode.org.ExerciseTracker.dto.SetsDTO;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.core.style.ToStringCreator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,22 +12,22 @@ public class Sets implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name ="sets_id", nullable = false, insertable = true, updatable = true) //defining the column name and details
+    @Column(name ="sets_id", insertable = true, updatable = true) //defining the column name and details
     private Long setsId;
 
     @Basic
     @Column(name="rep", insertable = true, updatable = true)
-    private int rep;
+    private Integer rep;
 
     @Basic
     @Column(name="weight", insertable = true, updatable = true)
-    private double weight;
+    private Integer weight;
 
     private static final long serialVersionUID = 445689846;
 
 
     @ManyToOne //many sets to one exercise
-    @JoinColumn(name = "exerciseId", referencedColumnName = "exerciseId", nullable = false, insertable = true, updatable = true)
+    @JoinColumn(name = "exerciseId", referencedColumnName = "exerciseId", insertable = true, updatable = true)
     private Exercise exercise;
 
 
@@ -39,7 +40,7 @@ public class Sets implements Serializable {
         this.weight = setsDTO.getWeight();
     }
 
-    public Sets (int rep, double weight) {
+    public Sets (Integer rep, Integer weight) {
         this.rep = rep;
         this.weight = weight;
     }
@@ -55,20 +56,20 @@ public class Sets implements Serializable {
     public void setSetsId(Long setsId) { this.setsId = setsId; }
 
 
-    public int getRep() {
+    public Integer getRep() {
         return rep;
     }
 
-    public void setRep(int rep) {
+    public void setRep(Integer rep) {
         this.rep = rep;
     }
 
 
-    public double getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
@@ -81,15 +82,27 @@ public class Sets implements Serializable {
         this.exercise = exercise;
     }
 
+    //change objects to Strings to better handle different types, null values etc.
+    @Override
+    public String toString() {
+        return new ToStringCreator(this)
+                .append("setsId", this.getSetsId())
+                .append("new", this.isNew())
+                .append("exercise", this.getExercise().getExerciseId())
+                .append("rep", this.getRep())
+                .append("weight", this.getWeight())
+                .toString();
+    }
+
     //pull in exercise
-    public static Builder getBuilder(Exercise exercise, int rep, double weight) {
+    public static Builder getBuilder(Exercise exercise, Integer rep, Integer weight) {
         return new Builder(exercise, rep, weight);
     }
 
     public static class Builder {
         private Sets built;
 
-        public Builder(Exercise exercise, int rep, double weight) {
+        public Builder(Exercise exercise, Integer rep, Integer weight) {
             built = new Sets();
             built.exercise = exercise;
             built.rep = rep;
