@@ -72,6 +72,7 @@ public class ExerciseController {
         //exerciseDao.save(exercise);
 
         ExerciseDTO exerciseDTO = ExerciseUtils.exerciseToExerciseDTO(exercise);
+        Exercise added = exerciseService.add(exerciseDTO);
 
         //grab exercise Id and add to the redirect
         Long exId = exercise.getExerciseId();

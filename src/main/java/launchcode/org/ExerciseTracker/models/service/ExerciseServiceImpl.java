@@ -1,6 +1,7 @@
 package launchcode.org.ExerciseTracker.models.service;
 
 
+import launchcode.org.ExerciseTracker.dto.ExerciseDTO;
 import launchcode.org.ExerciseTracker.dto.SetsDTO;
 import launchcode.org.ExerciseTracker.models.Exercise;
 import launchcode.org.ExerciseTracker.models.Sets;
@@ -54,6 +55,25 @@ public class ExerciseServiceImpl implements ExerciseService {
     @Transactional
     public Sets findSetsById (Long setsId) {
         return setDao.findBySetsId(setsId);
+    }
+
+    @Transactional
+    @Override
+    public Exercise add(ExerciseDTO exerciseDTO) {
+        //creates an instance of an Exercise, then saves to DB
+        Exercise exercise = Exercise.getBuilder(exerciseDTO.getName()).build();
+
+        Exercise ex = exerciseDao.save(exercise);
+
+        if (exerciseDTO.getSetsList() != null) {
+            for (SetsDTO setsDTO : exerciseDTO.getSetsList()) {
+                Sets sets = Sets.getBuilder(ex, setsDTO.getRep(), setsDTO.getWeight()).build();
+
+                setDao.save(sets);
+            }
+        }
+
+        return ex;
     }
 
     @Transactional

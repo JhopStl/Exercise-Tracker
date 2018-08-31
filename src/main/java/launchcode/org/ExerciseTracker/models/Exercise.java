@@ -3,6 +3,7 @@ package launchcode.org.ExerciseTracker.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import launchcode.org.ExerciseTracker.dto.ExerciseDTO;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.core.style.ToStringCreator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -89,6 +90,21 @@ public class Exercise implements Serializable {
     public void addSets(Sets sets) {
         sets.setExercise(this);
         getSetsList().add(sets);
+    }
+
+
+    @Override
+    public String toString() {
+    return new ToStringCreator(this)
+    .append("exerciseId", this.getExerciseId())
+    .append("new", this.isNew())
+    .append("name", this.getName())
+    .toString();
+    }
+
+
+    public static Builder getBuilder(String name) {
+        return new Builder (name);
     }
 
     public static class Builder {

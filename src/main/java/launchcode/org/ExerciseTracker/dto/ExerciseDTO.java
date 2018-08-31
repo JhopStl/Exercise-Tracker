@@ -13,16 +13,16 @@ public class ExerciseDTO {
     public ExerciseDTO() {}
 
     //Constructor
-    public ExerciseDTO(String name) {
-        this.name = name;
-    }
+    //public ExerciseDTO(String name) {
+        //this.name = name;
+   // }
 
     //Constructor
     //Ties ExerciseDTO to the Exercise model class
-    public ExerciseDTO (Exercise exercise) {
-        this.exerciseID = exercise.getExerciseId();
-        this.name = exercise.getName();
-    }
+    //public ExerciseDTO (Exercise exercise) {
+        //this.exerciseID = exercise.getExerciseId();
+        //this.name = exercise.getName();
+   // }
 
     public Long getExerciseID() {
         return exerciseID;
