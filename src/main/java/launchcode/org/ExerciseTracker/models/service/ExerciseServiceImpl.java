@@ -61,8 +61,7 @@ public class ExerciseServiceImpl implements ExerciseService {
     @Override
     public Exercise add(ExerciseDTO exerciseDTO) {
         //creates an instance of an Exercise, then saves to DB
-        Exercise exercise = Exercise.getBuilder(exerciseDTO.getName()).build();
-
+        Exercise exercise = Exercise.getBuilder(exerciseDTO.getName(), exerciseDTO.getSesh()).build();
         Exercise ex = exerciseDao.save(exercise);
 
         if (exerciseDTO.getSetsList() != null) {

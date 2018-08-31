@@ -68,10 +68,13 @@ public class ExerciseController {
         //exerciseDao.save(newExercise);
 
         wSession sesh = seshDao.findOne(seshId);
-        exercise.setwSession(sesh);
+        //exercise.setwSession(sesh);
         //exerciseDao.save(exercise);
 
+
+        //**need to tie seshID to exerciseDTO
         ExerciseDTO exerciseDTO = ExerciseUtils.exerciseToExerciseDTO(exercise);
+        exerciseDTO.setSesh(sesh);
         Exercise added = exerciseService.add(exerciseDTO);
 
         //grab exercise Id and add to the redirect

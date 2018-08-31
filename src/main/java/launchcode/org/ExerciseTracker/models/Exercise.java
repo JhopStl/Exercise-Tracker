@@ -103,17 +103,18 @@ public class Exercise implements Serializable {
     }
 
 
-    public static Builder getBuilder(String name) {
-        return new Builder (name);
+    public static Builder getBuilder(String name, wSession sesh) {
+        return new Builder (name, sesh);
     }
 
     public static class Builder {
 
         private Exercise built;
 
-        public Builder(String name) {
+        public Builder(String name, wSession sesh) {
             built = new Exercise();
             built.name = name;
+            built.sesh = sesh;
         }
 
         public Exercise build() {return built;}
