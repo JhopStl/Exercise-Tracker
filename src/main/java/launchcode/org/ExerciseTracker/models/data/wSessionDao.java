@@ -13,4 +13,6 @@ import java.util.List;
 @Repository
 public interface wSessionDao extends CrudRepository<wSession, Integer> {
     List<wSession> findAllByOrderByIdDesc();
+    wSession findByName (String name);
+
 }
