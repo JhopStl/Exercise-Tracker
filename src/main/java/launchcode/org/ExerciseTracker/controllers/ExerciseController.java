@@ -33,8 +33,9 @@ public class ExerciseController {
     public String addExercise(Model model, @PathVariable int seshId) {
 
         wSession wsessionId = seshDao.findOne(seshId);
-        model.addAttribute("sessionName", "Session Name " + seshDao.findByName("pee"));
-        model.addAttribute("title", "Add an exercise");
+        wsessionId.getName();
+        model.addAttribute("sessionName", "Session: " + wsessionId.getName());
+        model.addAttribute("title", "Add an exercise...");
         model.addAttribute(new Exercise());
         //no matter, what will pull a list of the most recently added session ID
         model.addAttribute("sessions", seshDao.findAllByOrderByIdDesc());
