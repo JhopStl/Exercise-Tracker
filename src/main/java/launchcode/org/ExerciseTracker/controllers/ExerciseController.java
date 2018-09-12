@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(value = "/{seshId}/exercise/")
+@RequestMapping(value = "{seshId}/exercise/")
 public class ExerciseController {
 
     @Autowired
