@@ -72,7 +72,7 @@ public class wSessionController {
        //need to grab user Id
         model.addAttribute("title", "Add Session");
         //redirects to the exercise controller and passes the wSession ID
-        return "redirect:/exercise/add/" + seshId;
+        return "redirect:" + seshId + "/exercise/add/";
     }
 
     //views session page (when user clicks on session URL, they are directed to new page)

@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(value = "exercise/")
+@RequestMapping(value = "/{seshId}/exercise/")
 public class ExerciseController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class ExerciseController {
 
     //handler to display add exercise form
     //use @PathVariable to pull in session ID from URL
-    @GetMapping("add/{seshId}")
+    @GetMapping("add")
     public String addExercise(Model model, @PathVariable int seshId) {
 
         wSession wsessionId = seshDao.findOne(seshId);
@@ -44,7 +44,7 @@ public class ExerciseController {
     }
 
     //process add Exercise form
-    @RequestMapping(value = "add/{seshId}", method = RequestMethod.POST)
+    @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processExercise(@ModelAttribute Exercise newExercise, Model model, @PathVariable int seshId) {
 
         model.addAttribute("title", "Add Exercise");
