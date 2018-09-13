@@ -36,7 +36,8 @@ public class ExerciseController {
         wsessionId.getName();
         model.addAttribute("sessionName", "Session: " + wsessionId.getName());
         model.addAttribute("title", "Add an exercise...");
-        model.addAttribute(new Exercise());
+        Exercise exercise = new Exercise();
+        model.addAttribute(exercise);
         //no matter, what will pull a list of the most recently added session ID
         model.addAttribute("sessions", seshDao.findAllByOrderByIdDesc());
         //return exercise/add view
