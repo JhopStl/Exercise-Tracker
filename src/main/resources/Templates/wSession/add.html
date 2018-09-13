@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body onload="$('input[name=name]')
+    .focus();$(function () {$('date')
+    .datepicker({dateFormat: 'mm/dd/yy'}); });"}>
+
 <nav th:replace="fragments :: navigation"></nav>
 
 <div class="container">
