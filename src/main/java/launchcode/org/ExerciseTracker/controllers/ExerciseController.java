@@ -41,7 +41,7 @@ public class ExerciseController {
         //no matter, what will pull a list of the most recently added session ID
         model.addAttribute("sessions", seshDao.findAllByOrderByIdDesc());
         //return exercise/add view
-        return "exercise/add";
+        return "exercise/add_init";
     }
 
     //process add Exercise form
