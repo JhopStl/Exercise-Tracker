@@ -28,9 +28,10 @@ public class SetController {
 
     //list sets handler
     @RequestMapping(value="")
-    public String index(Model model) {
+    public String index(Model model, @PathVariable int exId) {
         model.addAttribute("Sets", setDao.findAll());
         model.addAttribute("title", "Sets");
+
         return "set/index";
     }
 
@@ -91,6 +92,7 @@ public class SetController {
         setDao.save(newSet);
         model.addAttribute("Sets", setDao.findById(exId));
         model.addAttribute("exId", exId);
+        model.addAttribute("CurrentSets", setDao.findAllById(exId));
 
 
         return "set/index";
