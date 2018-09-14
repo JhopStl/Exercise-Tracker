@@ -86,6 +86,7 @@ public class SetController {
         //pull exercise ID
         Exercise exercise = exerciseDao.findOne(exId);
         model.addAttribute("title", "Add Set - " + exercise.getName());
+        model.addAttribute("SetsView", "Sets - " + exercise.getName());
         newSet.setExercise(exercise);
         setDao.save(newSet);
         model.addAttribute("Sets", setDao.findById(exId));
