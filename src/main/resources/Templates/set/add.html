@@ -11,6 +11,39 @@
         </div>
         <div class="col-6">
             <h1 th:text = "${title}">Default Title</h1>
+            <form method="POST">
+                <table class="table table-striped">
+                    <tr>
+                        <th class="col-sm-2">Reps</th>
+                        <th class="col-sm-2">Weight</th>
+                        <th class="col-sm-2"></th>
+                    </tr>
+                    <tr>
+                        <td><input type = "text" style="width:100px;" class="form-control" name = "rep" /></td>
+                        <td><input type = "number" style="width:100px;" class="form-control"  name = "weight" /></td>
+                        <td></td>
+                    </tr>
+                </table>
+
+                <div class="col-lg-12 button-col-align-right">
+                    <input type="submit" class="btn btn-primary" value="Add Set"/>
+                </div>
+            </form>
+
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+<!--div class="container">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-6">
+            <h1 th:text = "${title}">Default Title</h1-->
+
+            <!--Old-_>
             <!--form method="POST">
                 <div class="form-group">
                     <span>
@@ -31,8 +64,6 @@
             </div>
             </form-->
 
-
-
             <!--form method = "POST" id="set-form">
                 <div class="input-group">
                  <input class= "form-control" type="number" name="rep" id="reps"/>
@@ -40,28 +71,24 @@
                 <input class="form-control" type="text" name="weight" placeholder="Enter the weight..." />
             </div>
             </form-->
+            <!--End Old-->
 
-            <form th:object="${setForm}" method = "POST" id="set-form">
-                <!--label th:for="reps">Reps</label-->
-                <!--label th:for="weight">@ Weight:</label-->
+
+            <!--form th:object="${setForm}" method = "POST" id="set-form">
                 <div th:each="sets, rowStat : *{setsList}" class="input-group">
                     <input class= "form-control" type="number" th:field="*{setsList[__${rowStat.index}__].rep}" name="rep" id="reps"/>
                     <span class="input-group-addon">-</span>
                     <input class="form-control" type="text" th:field="*{setsList[__${rowStat.index}__].weight}" name="weight" placeholder="Enter weight..." />
                 </div>
-                <!--input type="submit" id="submit-form" value = "Finish Set" style = "visibility:hidden;" /-->
             </form>
             <br>
             <button id = "add-set">Add Set</button>
             <button form="set-form">Finish</button>
-
-
-
         </div>
         <div class="col">
         </div>
     </div>
-</div>
+</div-->
 </body>
-<script src = "/js/addSet.js"></script>
+<!--script src = "/js/addSet.js"></script-->
 </html>

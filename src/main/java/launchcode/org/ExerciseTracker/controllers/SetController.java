@@ -47,53 +47,53 @@ public class SetController {
 
     }
     //defining SetListForm object.  Allows access to the setlistForm object in view
-    @ModelAttribute("setForm")
-    public SetForm populateSets() {
-        //initialize the Sets list
-        SetForm setForm = new SetForm();
-        ArrayList<Sets> setsList = new ArrayList<Sets>();
-
-        //creates empty Sets objects
-        int count = setsList.size();
-        for (int i=0; i< count + 1; i++) {
-            setsList.add(new Sets());
-        }
-        setForm.setSetsList(setsList);
-        return setForm;
-    }
-
-
-
-    @RequestMapping(value ="add/{exId}", method=RequestMethod.POST)
-    public String saveSetForm(@ModelAttribute("setForm") SetForm setForm, Model model, @PathVariable int exId){
-        for(Sets sets : setForm.getSetsList()) {
-            //Create a new exercise from the ID that has pulled via URL (using @PathVariable to pull)
-            Exercise exercise = exerciseDao.findOne(exId);
-            model.addAttribute("title", "Add Set - " + exercise.getName());
-            //for each set, tie that to the new ;exercise that was created above
-            sets.setExercise(exercise);
-            setDao.save(sets);
-            model.addAttribute("Sets", setDao.findById(exId));
-            model.addAttribute("exId", exId);
-        }
-        return "set/index";
-    }
+//    @ModelAttribute("setForm")
+//    public SetForm populateSets() {
+//        //initialize the Sets list
+//        SetForm setForm = new SetForm();
+//        ArrayList<Sets> setsList = new ArrayList<Sets>();
+//
+//        //creates empty Sets objects
+//        int count = setsList.size();
+//        for (int i=0; i< count + 1; i++) {
+//            setsList.add(new Sets());
+//        }
+//        setForm.setSetsList(setsList);
+//        return setForm;
+//    }
+//
+//
+//
+//    @RequestMapping(value ="add/{exId}", method=RequestMethod.POST)
+//    public String saveSetForm(@ModelAttribute("setForm") SetForm setForm, Model model, @PathVariable int exId){
+//        for(Sets sets : setForm.getSetsList()) {
+//            //Create a new exercise from the ID that has pulled via URL (using @PathVariable to pull)
+//            Exercise exercise = exerciseDao.findOne(exId);
+//            model.addAttribute("title", "Add Set - " + exercise.getName());
+//            //for each set, tie that to the new ;exercise that was created above
+//            sets.setExercise(exercise);
+//            setDao.save(sets);
+//            model.addAttribute("Sets", setDao.findById(exId));
+//            model.addAttribute("exId", exId);
+//        }
+//        return "set/index";
+//    }
 
     //process and add new Set object
-    //@RequestMapping(value="add/{exId}", method = RequestMethod.POST)
-    //public String processSet(@ModelAttribute Sets newSet, Model model, @PathVariable int exId) {
+    @RequestMapping(value="add/{exId}", method = RequestMethod.POST)
+    public String processSet(@ModelAttribute Sets newSet, Model model, @PathVariable int exId) {
 
         //pull exercise ID
-        //Exercise exercise = exerciseDao.findOne(exId);
-        //model.addAttribute("title", "Add Set - " + exercise.getName());
-        //newSet.setExercise(exercise);
-        //setDao.save(newSet);
-        //model.addAttribute("Sets", setDao.findById(exId));
-        //model.addAttribute("exId", exId);
+        Exercise exercise = exerciseDao.findOne(exId);
+        model.addAttribute("title", "Add Set - " + exercise.getName());
+        newSet.setExercise(exercise);
+        setDao.save(newSet);
+        model.addAttribute("Sets", setDao.findById(exId));
+        model.addAttribute("exId", exId);
 
 
-        //return "set/index";
-    //}
+        return "set/index";
+    }
 
 
 
