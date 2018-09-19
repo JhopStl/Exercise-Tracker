@@ -82,7 +82,7 @@ public class SetController {
 
     //process and add new Set object
     @RequestMapping(value="add/{exId}", method = RequestMethod.POST)
-    public String processSet(@ModelAttribute Sets newSet, Model model, @PathVariable int exId) {
+    public String processSet(@ModelAttribute Sets newSet, SetForm setsList, Model model, @PathVariable int exId) {
 
         //pull exercise ID
         Exercise exercise = exerciseDao.findOne(exId);
@@ -92,7 +92,9 @@ public class SetController {
         setDao.save(newSet);
         model.addAttribute("Sets", setDao.findById(exId));
         model.addAttribute("exId", exId);
-        model.addAttribute("CurrentSets", setDao.findAllById(exId));
+        //model.addAttribute("CurrentSets", setDao.findAllById(exId));
+        model.addAttribute("CurrentSets", setDao.findAll());
+        model.addAttribute("CurrentSets1", newSet.getRep());
 
 
         return "set/index";
