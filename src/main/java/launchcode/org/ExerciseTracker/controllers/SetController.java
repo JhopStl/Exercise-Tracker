@@ -5,6 +5,7 @@ import launchcode.org.ExerciseTracker.models.Forms.SetForm;
 import launchcode.org.ExerciseTracker.models.Sets;
 import launchcode.org.ExerciseTracker.models.data.ExerciseDao;
 import launchcode.org.ExerciseTracker.models.data.SetDao;
+import launchcode.org.ExerciseTracker.models.wSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,7 +83,7 @@ public class SetController {
 
     //process and add new Set object
     @RequestMapping(value="add/{exId}", method = RequestMethod.POST)
-    public String processSet(@ModelAttribute Sets newSet, SetForm setsList, Model model, @PathVariable int exId) {
+    public String processSet(@ModelAttribute Sets newSet, Model model, @PathVariable int exId) {
 
         //pull exercise ID
         Exercise exercise = exerciseDao.findOne(exId);
@@ -90,12 +91,11 @@ public class SetController {
         model.addAttribute("SetsView", "Sets - " + exercise.getName());
         newSet.setExercise(exercise);
         setDao.save(newSet);
+        wSession w = exercise.getwSession();
         model.addAttribute("Sets", setDao.findById(exId));
         model.addAttribute("exId", exId);
         model.addAttribute("CurrentSets", setDao.findAllByExerciseId(exId));
-        model.addAttribute("CurrentSets1", newSet.getRep());
-
-
+        model.addAttribute("Test", w.getId());
         return "set/index";
     }
 
