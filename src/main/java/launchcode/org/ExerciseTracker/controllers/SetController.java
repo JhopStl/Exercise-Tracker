@@ -92,8 +92,7 @@ public class SetController {
         setDao.save(newSet);
         model.addAttribute("Sets", setDao.findById(exId));
         model.addAttribute("exId", exId);
-        //model.addAttribute("CurrentSets", setDao.findAllById(exId));
-        model.addAttribute("CurrentSets", setDao.findAll());
+        model.addAttribute("CurrentSets", setDao.findAllByExerciseId(exId));
         model.addAttribute("CurrentSets1", newSet.getRep());
 
 

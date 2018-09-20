@@ -11,5 +11,5 @@ import java.util.List;
 @Transactional
 public interface SetDao extends CrudRepository <Sets, Integer> {
     Sets findById(int id);
-    List<Sets> findAllById(int exercise_id);
+    List<Sets> findAllByExerciseId(int id);
 }
